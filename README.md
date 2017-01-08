@@ -1,0 +1,1 @@
+a simple file editor made with Qt5

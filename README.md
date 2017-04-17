@@ -5,4 +5,4 @@ Last release : 3.2
 Download :
 
 
-Windows installer : https://bitbucket.org/MixLeNain/qmtext/downloads/QMTextInstaller-win32.exe
+Windows installer (32 bits) : https://bitbucket.org/MixLeNain/qmtext/downloads/QMTextInstaller-win32.exe

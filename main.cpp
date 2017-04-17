@@ -4,9 +4,15 @@
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
+#include <QtPlugin>
+
+
 
 int main(int argc, char *argv[])
 {
+    //Q_IMPORT_PLUGIN(platforms);
+    //Q_IMPORT_PLUGIN(qprintsupport);
+
     //inutilisé par le programme, necessaire juste pour creer le fichier de traduction
     Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "Cancel"));
     Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "Apply"));
@@ -14,8 +20,6 @@ int main(int argc, char *argv[])
     Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "&No"));
     Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "OK"));
     Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "Save"));
-
-
 
     QApplication app(argc, argv); // initialisation du programme
 

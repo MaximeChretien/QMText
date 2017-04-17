@@ -12,3 +12,5 @@ RESOURCES += \
 
 RC_ICONS = icon.ico
 TRANSLATIONS = qmtext_en.ts qmtext_fr.ts
+//CONFIG += static
+//QTPLUGIN +=

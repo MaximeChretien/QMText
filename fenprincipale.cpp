@@ -212,7 +212,7 @@ void FenPrincipale::creerMenus() //creation des menus
 
 void FenPrincipale::aPropos() // menu a propos...
 {
-    QMessageBox::information(this, tr("A propos..."), tr("Editeur de texte réalisé par Mix<br /><strong>Version x</strong>")); //le x est modifié par la trad (plus simple a refaire en cas d'oubli de modif ...
+    QMessageBox::information(this, tr("A propos..."), tr("Editeur de texte réalisé par Mix<br /><strong>Version x</strong>")); //le x est modifié par la trad (plus simple a refaire en cas d'oubli de modif ...)
 }
 
 void FenPrincipale::save() // sauvegarde

@@ -4,14 +4,11 @@
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
-#include <QtPlugin>
 
 
 
 int main(int argc, char *argv[])
 {
-    //Q_IMPORT_PLUGIN(platforms);
-    //Q_IMPORT_PLUGIN(qprintsupport);
 
     //inutilisé par le programme, necessaire juste pour creer le fichier de traduction
     Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "Cancel"));
@@ -28,7 +25,7 @@ int main(int argc, char *argv[])
     QTranslator translator;
 
     //initialisation des element de config
-    QFile config("./QMText.conf");
+    QFile config("QMText.conf");
     QStringList configData;
     QTextStream fluxConfig(&config);
     QFont font;

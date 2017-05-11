@@ -1,8 +1,9 @@
 #include "fenprincipale.h"
 
-FenPrincipale::FenPrincipale(QFont font, QString lang, QString theme) //Constructeur
+FenPrincipale::FenPrincipale(QString confFile, QFont font, QString lang, QString theme) //Constructeur
 {
-    QFile conf("./QMText.conf");
+    configFile = confFile;
+    QFile conf(configFile);
     QTextStream fluxConf(&conf);
 
     fluxConf.setCodec("UTF-8");
@@ -370,7 +371,7 @@ void FenPrincipale::saveTestFalse() // passe le test de sauvegarde en false et c
 void FenPrincipale::closeEvent(QCloseEvent * event) //en cas de fermeture du programme
 {
     //ouverture du fichier de config
-    QFile conf("./QMText.conf");
+    QFile conf(configFile);
     QTextStream fluxConf(&conf);
 
     fluxConf.setCodec("UTF-8");

@@ -10,6 +10,7 @@
 int main(int argc, char *argv[])
 {
 
+
     //inutilisé par le programme, necessaire juste pour creer le fichier de traduction
     Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "Cancel"));
     Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "Apply"));
@@ -20,12 +21,18 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv); // initialisation du programme
 
+    //initialisation des variables
+    QString confFile = qApp->applicationDirPath() + "/QMText.conf";
+    QString tradDir = qApp->applicationDirPath() + "/res/tr/";
+    QString themeDir = qApp->applicationDirPath() + "/res/qss/";
+
     //recuperation de la langue du systeme
     QString locale = QLocale::system().name().section('_', 0, 0);
     QTranslator translator;
 
+
     //initialisation des element de config
-    QFile config("QMText.conf");
+    QFile config(confFile);
     QStringList configData;
     QTextStream fluxConfig(&config);
     QFont font;
@@ -80,22 +87,22 @@ int main(int argc, char *argv[])
 
         if(configData[2] == "System")
         {
-            if(QFile("./res/tr/qmtext_" + locale + ".qm").exists())
-                translator.load("./res/tr/qmtext_" + locale);
+            if(QFile(tradDir + "qmtext_" + locale + ".qm").exists())
+                translator.load(tradDir + "qmtext_" + locale);
            else
-                translator.load("./res/tr/qmtext_en");
+                translator.load(tradDir + "qmtext_en");
         }
         else if(configData[2] == "En")
         {
-            translator.load("./res/tr/qmtext_en");
+            translator.load(tradDir + "qmtext_en");
         }
         else if(configData[2] == "Fr")
         {
-            translator.load("./res/tr/qmtext_fr");
+            translator.load(tradDir + "qmtext_fr");
         }
         else
         {
-            translator.load("./res/tr/qmtext_" + locale);
+            translator.load(tradDir + "qmtext_" + locale);
             configData[2] = "System";
         }
         QString lang = configData[2];
@@ -107,21 +114,21 @@ int main(int argc, char *argv[])
 
         if(configData[3] == "Light")
         {
-            QFile file("./res/qss/Light.qss");
+            QFile file(themeDir + "Light.qss");
             file.open(QFile::ReadOnly);
             app.setStyleSheet(QLatin1String(file.readAll()));
             file.close();
         }
         else if(configData[3] == "Dark")
         {
-            QFile file("./res/qss/Dark.qss");
+            QFile file(themeDir + "Dark.qss");
             file.open(QFile::ReadOnly);
             app.setStyleSheet(QLatin1String(file.readAll()));
             file.close();
         }
         else
         {
-            QFile file("./res/qss/Light.qss");
+            QFile file(themeDir + "Light.qss");
             file.open(QFile::ReadOnly);
             app.setStyleSheet(QLatin1String(file.readAll()));
             file.close();
@@ -139,7 +146,7 @@ int main(int argc, char *argv[])
 
     app.installTranslator(&translator);
 
-    FenPrincipale win(font, lang, theme);
+    FenPrincipale win(confFile,font, lang, theme);
 
     win.show();
 

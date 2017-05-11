@@ -11,7 +11,7 @@ class FenPrincipale : public QMainWindow //classe principale
     Q_OBJECT
 
 public:
-    FenPrincipale(QFont font, QString lang, QString theme);
+    FenPrincipale(QString confFile, QFont font, QString lang, QString theme);
     void creerMenus(); //creation des menus (fichier, edition,...)
     void creerActions(); //creations des actions
     int saveMessageBox(); //boite de dialogue de sauvegarde
@@ -73,8 +73,8 @@ private:
 
     bool saveTest; //true = save, false = not save
     QString filePath; //emplacement du fichier
-    QString fileType = "Fichiers texte (*.txt);; Fichiers C (*.c);; Fichiers C++ (*.cpp);; Fichiers Header (*.h);; Fichiers Java (*.java);; Fichiers HTML (*.html);; Fichiers CSS (*.css);; Fichiers PHP (*.php);; Fichiers Javascript (*.js);; Fichiers SQL (*.sql);; Fichiers XML (*.xml);; Scripts Python (*.py);; Scripts Batch (*.bat);; Scripts Shell (*.sh);; Tous les fichiers (*.*)";
-    //differents type de fichier gérés (totalement non exhaustif)
+    QString fileType = "Fichiers texte (*.txt);; Fichiers C (*.c);; Fichiers C++ (*.cpp);; Fichiers Header (*.h);; Fichiers Java (*.java);; Fichiers HTML (*.html);; Fichiers CSS (*.css);; Fichiers PHP (*.php);; Fichiers Javascript (*.js);; Fichiers SQL (*.sql);; Fichiers XML (*.xml);; Scripts Python (*.py);; Scripts Batch (*.bat);; Scripts Shell (*.sh);; Tous les fichiers (*.*)"; //differents type de fichier gérés (totalement non exhaustif)
+    QString configFile;
 };
 
 #endif // FENPRINCIPALE

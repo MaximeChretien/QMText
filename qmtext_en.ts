@@ -126,7 +126,7 @@
     <message>
         <location filename="fenprincipale.cpp" line="188"/>
         <source>Editeur de texte réalisé par Mix&lt;br /&gt;&lt;strong&gt;Version x&lt;/strong&gt;</source>
-        <translation>Text editor released by Mix&lt;br /&gt;Sorry for English mistakes, I don&apos;t speak English very well :/ &lt;br /&gt;&lt;strong&gt;Release 3.2&lt;/strong&gt;</translation>
+        <translation>Text editor released by Mix&lt;br /&gt;Sorry for English mistakes, I don&apos;t speak English very well :/ &lt;br /&gt;&lt;strong&gt;Release 3.3&lt;/strong&gt;</translation>
     </message>
     <message>
         <source>Editeur de texte réalisé par Mix&lt;br /&gt;&lt;strong&gt;Version 3.0&lt;/strong&gt;</source>

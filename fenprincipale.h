@@ -5,6 +5,7 @@
 #include <QtWidgets>
 #include <QPrinter>
 #include <QPrintDialog>
+#include "editor.h"
 
 class FenPrincipale : public QMainWindow //classe principale
 {
@@ -44,7 +45,7 @@ private slots:  //differentes slots corespondant aux actions
 
 
 private:
-    QPlainTextEdit *mainText; //zone de texte
+    Editor *mainText; //zone de texte
     QStringList confData; //tableau contenant les parametres de config
     QMenuBar *mnuBar; //barre des menus
 

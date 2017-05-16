@@ -17,7 +17,7 @@ FenPrincipale::FenPrincipale(QString confFile, QFont font, QString lang, QString
 
     filePath = "";//emplacement du fichier vide par defaut
 
-    mainText = new QPlainTextEdit(this); //cretion de la zone de texte
+    mainText = new Editor(this); //cretion de la zone de texte
     mainText->setLineWrapMode(QPlainTextEdit::NoWrap); //activation de la scrollbar horizontale
     mainText->setFrameStyle(QFrame::NoFrame); // desactivation des bordures
 

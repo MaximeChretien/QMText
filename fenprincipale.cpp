@@ -60,8 +60,6 @@ FenPrincipale::FenPrincipale(QString confFile, QFont font, QString lang, QString
         actionThemeDark->setChecked(true);
     }
 
-    //initialisation du test de sauvegarde
-    saveTest = new bool(true);
 
     //diverses actions realisé en cas de changement du texte dans la zone de texte
     connect(mainText, SIGNAL(textChanged()), this, SLOT(saveTestFalse()));
@@ -83,9 +81,11 @@ FenPrincipale::FenPrincipale(QString confFile, QFont font, QString lang, QString
 
         mainText->setPlainText(flux.readAll());
     }
-    //fix pour la sauvegarde et le titre
-   saveTest = true;
-   changementTitre();
+
+    //initialisation du test de sauvegarde
+    saveTest = new bool(true);
+
+    changementTitre();
 }
 
 void FenPrincipale::creerActions() //creation des actions

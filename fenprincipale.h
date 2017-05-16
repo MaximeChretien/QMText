@@ -44,7 +44,7 @@ private slots:  //differentes slots corespondant aux actions
 
 
 private:
-    QTextEdit *mainText; //zone de texte
+    QPlainTextEdit *mainText; //zone de texte
     QStringList confData; //tableau contenant les parametres de config
     QMenuBar *mnuBar; //barre des menus
 

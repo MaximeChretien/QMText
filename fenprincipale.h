@@ -74,7 +74,7 @@ private:
 
     bool saveTest; //true = save, false = not save
     QString filePath; //emplacement du fichier
-    QString fileType = "Fichiers texte (*.txt);; Fichiers C (*.c);; Fichiers C++ (*.cpp);; Fichiers Header (*.h);; Fichiers Java (*.java);; Fichiers HTML (*.html);; Fichiers CSS (*.css);; Fichiers PHP (*.php);; Fichiers Javascript (*.js);; Fichiers SQL (*.sql);; Fichiers XML (*.xml);; Scripts Python (*.py);; Scripts Batch (*.bat);; Scripts Shell (*.sh);; Tous les fichiers (*.*)"; //differents type de fichier gérés (totalement non exhaustif)
+    QString fileType = "Tous les fichiers (*);; Fichiers texte (*.txt);; Fichiers C (*.c);; Fichiers C++ (*.cpp);; Fichiers Header (*.h);; Fichiers Java (*.java);; Fichiers HTML (*.html);; Fichiers CSS (*.css);; Fichiers PHP (*.php);; Fichiers Javascript (*.js);; Fichiers SQL (*.sql);; Fichiers XML (*.xml);; Scripts Python (*.py);; Scripts Batch (*.bat);; Scripts Shell (*.sh)"; //differents type de fichier gérés (totalement non exhaustif)
     QString configFile;
 };
 

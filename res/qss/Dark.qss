@@ -4,7 +4,7 @@ color: white;
 background-color: rgb(50,50,50);
 } 
 
-QTextEdit 
+QPlainTextEdit 
 {
 background-color: black;
 }

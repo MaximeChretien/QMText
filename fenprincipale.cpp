@@ -117,11 +117,11 @@ void FenPrincipale::creerActions() //creation des actions
     connect(actionSaveAs, SIGNAL(triggered(bool)), this, SLOT(saveAs()));
 
     actionAnnuler = new QAction(tr("Annuler"), this);
-    actionAnnuler->setShortcut(QKeySequence::Undo);
+    actionAnnuler->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Z));
     connect(actionAnnuler, SIGNAL(triggered(bool)), mainText , SLOT(undo()));
 
     actionRestaurer = new QAction(tr("Restaurer"), this);
-    actionRestaurer->setShortcut(QKeySequence::Redo);
+    actionRestaurer->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Y));
     connect(actionRestaurer, SIGNAL(triggered(bool)), mainText, SLOT(redo()));
 
     actionCopier = new QAction(tr("Copier"), this);
@@ -146,6 +146,14 @@ void FenPrincipale::creerActions() //creation des actions
     actionImprimer = new QAction(tr("Imprimer..."), this);
     actionImprimer->setShortcut(QKeySequence::Print);
     connect(actionImprimer, SIGNAL(triggered(bool)), this, SLOT(imprimer()));
+
+    actionZoomPlus = new QAction(tr("Zoom Plus"),this);
+    actionZoomPlus->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Plus));
+    connect(actionZoomPlus, SIGNAL(triggered(bool)), this, SLOT(zoomIn()));
+
+    actionZoomMoins = new QAction(tr("Zoom Moins"),this);
+    actionZoomMoins->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Minus));
+    connect(actionZoomMoins, SIGNAL(triggered(bool)), this, SLOT(zoomOut()));
 
     actionLangueSysteme = new QAction(tr("Langue du Système"), this);
     actionLangueSysteme->setCheckable(true);
@@ -193,6 +201,9 @@ void FenPrincipale::creerMenus() //creation des menus
     edition->addAction(actionColler);
     edition->addSeparator();//ajout d'un separateur
     edition->addAction(actionPolice);
+    edition->addSeparator();//ajout d'un separateur
+    edition->addAction(actionZoomPlus);
+    edition->addAction(actionZoomMoins);
 
     QMenu *langues = mnuBar->addMenu(tr("&Langues"));//creation du menu Langues
     langues->setCursor(Qt::PointingHandCursor); //changement de curseur
@@ -528,4 +539,18 @@ void FenPrincipale::changeThemeDark()
     changeTheme("Dark");
     actionThemeDark->setChecked(true);
     actionThemeLight->setChecked(false);
+}
+
+void FenPrincipale::zoomIn()
+{
+    QFont font = mainText->font();
+    font.setPointSize(font.pointSize()+1);
+    mainText->setFont(font);
+}
+
+void FenPrincipale::zoomOut()
+{
+    QFont font = mainText->font();
+    font.setPointSize(font.pointSize()-1);
+    mainText->setFont(font);
 }

@@ -29,6 +29,9 @@ private slots:  //differentes slots corespondant aux actions
     void imprimer();
     void changementTitre();
 
+    void zoomIn();
+    void zoomOut();
+
     void saveTestFalse();//test de sauvegarde = faux
     void closeEvent(QCloseEvent * event); //pour verifier la sauvegarde avant de quitter
     void emptyTest();//pour pouvoir fermer le prog si le fichier n'a jamais été enregistrer et que la zone de texte est vide
@@ -64,6 +67,8 @@ private:
     QAction *actionOuvrir;
     QAction *actionPolice;
     QAction *actionImprimer;
+    QAction *actionZoomPlus;
+    QAction *actionZoomMoins;
     //langues
     QAction *actionLangueSysteme;
     QAction *actionLangueFr;

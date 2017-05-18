@@ -546,6 +546,7 @@ void FenPrincipale::zoomIn()
     QFont font = mainText->font();
     font.setPointSize(font.pointSize()+1);
     mainText->setFont(font);
+    confData[1] = "FontSize = \"" + QString::number(mainText->font().pointSize()) + "\"";
 }
 
 void FenPrincipale::zoomOut()
@@ -553,4 +554,5 @@ void FenPrincipale::zoomOut()
     QFont font = mainText->font();
     font.setPointSize(font.pointSize()-1);
     mainText->setFont(font);
+    confData[1] = "FontSize = \"" + QString::number(mainText->font().pointSize()) + "\"";
 }

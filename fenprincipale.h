@@ -3,9 +3,8 @@
 
 #include <QtGui>
 #include <QtWidgets>
-#include <QPrinter>
-#include <QPrintDialog>
 #include "editor.h"
+#include "tab.h"
 
 class FenPrincipale : public QMainWindow //classe principale
 {
@@ -15,26 +14,21 @@ public:
     FenPrincipale(QString confFile, QFont font, QString lang, QString theme);
     void creerMenus(); //creation des menus (fichier, edition,...)
     void creerActions(); //creations des actions
-    int saveMessageBox(); //boite de dialogue de sauvegarde
     void changeLanguage(QString langue); //methode pour changer de langue
     void changeTheme(QString theme); //methode pour changer le thème
 
 private slots:  //differentes slots corespondant aux actions
     void aPropos();
-    void nouveau();
-    void save();
-    void saveAs();
+    void nouveau(QString path = "");
     void ouvrir();
     void police();
-    void imprimer();
+
     void changementTitre();
 
     void zoomIn();
     void zoomOut();
 
-    void saveTestFalse();//test de sauvegarde = faux
     void closeEvent(QCloseEvent * event); //pour verifier la sauvegarde avant de quitter
-    void emptyTest();//pour pouvoir fermer le prog si le fichier n'a jamais été enregistrer et que la zone de texte est vide
 
     void dropEvent(QDropEvent *event); // pour le drag & drop
     void dragEnterEvent(QDragEnterEvent *event);// pareil
@@ -48,7 +42,7 @@ private slots:  //differentes slots corespondant aux actions
 
 
 private:
-    Editor *mainText; //zone de texte
+    Tab *tabWidget;
     QStringList confData; //tableau contenant les parametres de config
     QMenuBar *mnuBar; //barre des menus
 
@@ -77,10 +71,8 @@ private:
     QAction *actionThemeLight;
     QAction *actionThemeDark;
 
-    bool saveTest; //true = save, false = not save
-    QString filePath; //emplacement du fichier
-    QString fileType = "Tous les fichiers (*);; Fichiers texte (*.txt);; Fichiers C (*.c);; Fichiers C++ (*.cpp);; Fichiers Header (*.h);; Fichiers Java (*.java);; Fichiers HTML (*.html);; Fichiers CSS (*.css);; Fichiers PHP (*.php);; Fichiers Javascript (*.js);; Fichiers SQL (*.sql);; Fichiers XML (*.xml);; Scripts Python (*.py);; Scripts Batch (*.bat);; Scripts Shell (*.sh)"; //differents type de fichier gérés (totalement non exhaustif)
     QString configFile;
+
 };
 
 #endif // FENPRINCIPALE

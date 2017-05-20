@@ -1,13 +1,31 @@
 #include "editor.h"
 
-Editor::Editor(QWidget *parent) : QPlainTextEdit(parent)
+Editor::Editor(QWidget *parent, QString path) : QPlainTextEdit(parent)
 {
+    filePath = path;
+
+    setLineWrapMode(QPlainTextEdit::NoWrap);
+    setFrameStyle(QFrame::NoFrame);
+    setAcceptDrops(false);
+
     lineNumberArea = new LineNumberArea(this);
 
     connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateLineNumberAreaWidth(int)));
     connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateLineNumberArea(QRect,int)));
 
+    connect(this, SIGNAL(textChanged()), this, SLOT(setSaveState()));
+
     updateLineNumberAreaWidth(0);
+
+    if(!filePath.isEmpty())
+    {
+        QFile fichier(filePath);
+        fichier.open(QIODevice::ReadOnly | QIODevice::Text);
+        QTextStream flux(&fichier);
+
+        setPlainText(flux.readAll());
+    }
+    setSaveState(true);
 }
 
 int Editor::lineNumberAreaWidth()
@@ -56,17 +74,73 @@ void Editor::lineNumberAreaPaintEvent(QPaintEvent *event)
     int blockNumber = block.blockNumber();
     int top = (int) blockBoundingGeometry(block).translated(contentOffset()).top();
     int bottom = top + (int) blockBoundingRect(block).height();
-    while (block.isValid() && top <= event->rect().bottom()) {
-            if (block.isVisible() && bottom >= event->rect().top()) {
+    while (block.isValid() && top <= event->rect().bottom())
+    {
+            if (block.isVisible() && bottom >= event->rect().top())
+            {
                 QString number = QString::number(blockNumber + 1);
                 painter.setPen(Qt::black);
-                painter.drawText(0, top, lineNumberArea->width(), fontMetrics().height(),
-                                 Qt::AlignCenter, number);
+                painter.drawText(0, top, lineNumberArea->width(), fontMetrics().height(), Qt::AlignCenter, number);
             }
 
             block = block.next();
             top = bottom;
             bottom = top + (int) blockBoundingRect(block).height();
             ++blockNumber;
-        }
     }
+}
+
+void Editor::setSaveState(bool state)
+{
+    if(filePath.isEmpty() && this->toPlainText().isEmpty())
+    {
+        saveState = true;
+    }
+    else
+    {
+        saveState = state;
+    }
+}
+
+bool Editor::getSaveState()
+{
+    return saveState;
+}
+
+void Editor::setFilePath(QString newPath)
+{
+    filePath = newPath;
+}
+
+QString Editor::getFilePath()
+{
+    return filePath;
+}
+
+void Editor::save() // sauvegarde
+{
+        QFile saveFile(filePath);
+        saveFile.open(QIODevice::WriteOnly | QIODevice::Text);
+        QTextStream flux(&saveFile);
+
+        flux.setCodec("UTF-8");
+
+        flux << toPlainText();
+        setSaveState(true);
+}
+
+void Editor::imprimer() //impression
+{
+    //initialisation de l'imprimante et ouverture de la boite de dialogue
+    QPrinter * imprimante = new QPrinter;
+    QPrintDialog * dialogue = new QPrintDialog(imprimante, this);
+
+    if(dialogue->exec() == QDialog::Accepted)//si ok, impression du fichier
+        print(imprimante);
+
+}
+
+QString Editor::getFileTypes()
+{
+    return fileTypes;
+}

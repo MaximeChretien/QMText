@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
     {
         //si inexistant : creation et remplissage du fichier avec les valeurs par defaut
         config.open(QIODevice::WriteOnly | QIODevice::Text);
-        fluxConfig << "Font = \"Courier\"" << endl << "FontSize = \"10\"" << endl << "Language = \"System\"" << endl << "Theme = \"Light\"" ;
+        fluxConfig << "Font = \"Courier\"" << endl << "FontSize = \"12\"" << endl << "Language = \"System\"" << endl << "Theme = \"Light\"" ;
         config.close();
     }
     config.open(QIODevice::ReadWrite | QIODevice::Text);
@@ -74,8 +74,8 @@ int main(int argc, char *argv[])
         }
         else
         {
-            font.setPointSize(10);
-            configData[1] = "10";
+            font.setPointSize(12);
+            configData[1] = "12";
         }
         configData[1] = "FontSize = \"" + configData[1] + "\"";
 

@@ -11,16 +11,8 @@ Tab::Tab(QWidget *parent, QFont font) : QTabWidget(parent)
 void Tab::addNewTab(QString filePath)
 {
     Editor *textZone = new Editor(this, filePath);
-    QString name;
-    if (filePath == "")
-    {
-        name = "Sans Titre";
-    }
-    else
-    {
-        name = filePath;
-    }
-    addTab(textZone, name);
+
+    addTab(textZone, getTitle(true, filePath)[0]);
     textZone->setFont(textFont);
     setCurrentIndex(count()-1);
     connect(textZone, SIGNAL(textChanged()), this, SLOT(changeTitle()));
@@ -111,26 +103,37 @@ QFont Tab::getFont()
     return textFont;
 }
 
-void Tab::changeTitle()
+QStringList Tab::getTitle(bool newTab, QString path)
 {
-    QFile docu(getCurrentEditor()->getFilePath()); //recuperation du fichier
-
-    QString titreCourt = docu.fileName(); //recuperation du nom d fichier (avec emplacement)
+    QString titre = path.section("/", -1, -1); //recuperation du nom d fichier
+    QString file = path;
     #ifdef WIN32 //modification du formatage du chemin de fichier pour windows
-    titreCourt.replace("/", "\\"); // changement de "/" en "\"
+    file.replace("/", "\\"); // changement de "/" en "\"
     #endif
 
-        if (titreCourt.isEmpty())
+    if (titre.isEmpty())
+    {
+        titre = tr("Sans Titre"); // si vide titre = "Sans Titre"
+        file = titre;
+    }
+
+    if(!newTab)
+    {
+        if(!getCurrentEditor()->getSaveState())
         {
-            titreCourt = tr("Sans Titre"); // si vide titre = "Sans Titre"
+            titre = "* " + titre; // si non sauvegardé, ajout de "*" au debut
+            file = "* " + file;
         }
 
-        if (getCurrentEditor()->getSaveState() == false)
-        {
-            titreCourt = "* " + titreCourt; // si non sauvegardé, ajout de "*" au debut
-        }
+    }
 
-        setTabText(currentIndex(),titreCourt);
+    QStringList list = {titre, file};
+    return list;
+}
+
+void Tab::changeTitle()
+{
+        setTabText(currentIndex(),getTitle(false, getCurrentEditor()->getFilePath())[0]);
         emit currentChanged(currentIndex());
 }
 

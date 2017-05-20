@@ -2,7 +2,6 @@
 #define TAB_H
 
 #include <QTabWidget>
-#include <QCoreApplication>
 #include <QMessageBox>
 #include "editor.h"
 
@@ -19,6 +18,7 @@ public:
     QFont getFont();
     Editor* getCurrentEditor();
     int saveMessageBox(); //boite de dialogue de sauvegarde
+    QStringList getTitle(bool newTab = true, QString path = "");
 
 public slots:
     void undo();
@@ -31,10 +31,6 @@ public slots:
     void changeTitle();
     void save();
     void saveAs();
-
-private slots:
-
-
 
 private:
     QStringList filePaths;

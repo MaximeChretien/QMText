@@ -243,7 +243,7 @@ void FenPrincipale::police() // changement de police
 
 void FenPrincipale::changementTitre() // changement du titre de la fenetre
 {
-    setWindowTitle(tabWidget->tabText(tabWidget->currentIndex()) + " - " + tr("QMText"));
+    setWindowTitle(tabWidget->getTitle(false, tabWidget->getCurrentEditor()->getFilePath())[1] + " - " + tr("QMText"));
 }
 
 void FenPrincipale::closeEvent(QCloseEvent * event) //en cas de fermeture du programme

@@ -2,14 +2,14 @@ QT += widgets printsupport
 
 SOURCES += \
     main.cpp \
-    fenprincipale.cpp \
-    editor.cpp \
-    tab.cpp
+    MainWindow.cpp \
+    Editor.cpp \
+    Tab.cpp
 
 HEADERS += \
-    fenprincipale.h \
-    editor.h \
-    tab.h
+    Editor.h \
+    MainWindow.h \
+    Tab.h
 
 RESOURCES += \
     res.qrc

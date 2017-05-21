@@ -3,9 +3,7 @@
 
 #include <QTabWidget>
 #include <QMessageBox>
-#include "editor.h"
-
-#include <QDebug>
+#include "Editor.h"
 
 class Tab : public QTabWidget
 {
@@ -17,7 +15,7 @@ public:
     void setFont(QFont newFont);
     QFont getFont();
     Editor* getCurrentEditor();
-    int saveMessageBox(); //boite de dialogue de sauvegarde
+    int saveMessageBox();
     QStringList getTitle(bool newTab = true, QString path = "");
 
 public slots:
@@ -26,7 +24,7 @@ public slots:
     void copy();
     void paste();
     void cut();
-    void imprimer();
+    void printFile();
     void closeTab(int index);
     void changeTitle();
     void save();

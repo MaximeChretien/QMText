@@ -27,7 +27,7 @@ public slots:
     void setSaveState(bool state = false);
     void setFilePath(QString newPath = "");
     void save();
-    void imprimer();
+    void printFile();
 
 protected:
     void resizeEvent(QResizeEvent *event) override;
@@ -41,7 +41,7 @@ private:
     QWidget *lineNumberArea;
     bool saveState; //true = save, false = not save
     QString filePath;
-    QString fileTypes = "Tous les fichiers (*);; Fichiers texte (*.txt);; Fichiers C (*.c);; Fichiers C++ (*.cpp);; Fichiers Header (*.h);; Fichiers Java (*.java);; Fichiers HTML (*.html);; Fichiers CSS (*.css);; Fichiers PHP (*.php);; Fichiers Javascript (*.js);; Fichiers SQL (*.sql);; Fichiers XML (*.xml);; Scripts Python (*.py);; Scripts Batch (*.bat);; Scripts Shell (*.sh)"; //differents type de fichier gérés (totalement non exhaustif)
+    QString fileTypes = tr("All Files (*);; Text Files (*.txt);; C Files (*.c);; C++ Files (*.cpp);; Header Files (*.h);; Java Files (*.java);; HTML Files (*.html);; CSS Files (*.css);; PHP Files (*.php);; Javascript Files (*.js);; XML Files (*.xml);; Python Scripts (*.py);; Batch Scripts (*.bat);; Shell Scripts (*.sh)");
 
 };
 

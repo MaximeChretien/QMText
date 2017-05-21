@@ -1,4 +1,4 @@
-#include "fenprincipale.h"
+#include "MainWindow.h"
 #include <QApplication>
 #include <QList>
 #include <QTranslator>
@@ -11,50 +11,50 @@ int main(int argc, char *argv[])
 {
 
 
-    //inutilisé par le programme, necessaire juste pour creer le fichier de traduction
-    Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "Cancel"));
+    //unused by soft, just for translate
+    Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "&Cancel"));
     Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "Apply"));
     Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "&Yes"));
     Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "&No"));
     Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "OK"));
-    Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "Save"));
+    Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "&Save"));
 
-    QApplication app(argc, argv); // initialisation du programme
+    QApplication app(argc, argv);
 
-    //initialisation des variables
+    //files paths init
     QString confFile = qApp->applicationDirPath() + "/QMText.conf";
     QString tradDir = qApp->applicationDirPath() + "/res/tr/";
     QString themeDir = qApp->applicationDirPath() + "/res/qss/";
 
-    //recuperation de la langue du systeme
+    //get system language
     QString locale = QLocale::system().name().section('_', 0, 0);
     QTranslator translator;
 
 
-    //initialisation des element de config
+    //config init
     QFile config(confFile);
     QStringList configData;
     QTextStream fluxConfig(&config);
     QFont font;
     fluxConfig.setCodec("UTF-8");
 
-    //verification de l'existence du fichier de config
+    //if config file don't exist
     if(!config.exists())
     {
-        //si inexistant : creation et remplissage du fichier avec les valeurs par defaut
+        //create it with default settings
         config.open(QIODevice::WriteOnly | QIODevice::Text);
         fluxConfig << "Font = \"Courier\"" << endl << "FontSize = \"12\"" << endl << "Language = \"System\"" << endl << "Theme = \"Light\"" ;
         config.close();
     }
     config.open(QIODevice::ReadWrite | QIODevice::Text);
-    //lecture du fichier de config
+    //read config file
     while(!fluxConfig.atEnd())
     {
         configData.append(fluxConfig.readLine());
     }
 
-    //aplication des paramètres
-        //style de la police
+    //apply config
+        //font
         configData[0].replace("Font = \"", "");
         configData[0].replace("\"", "");
         font.setFamily(configData[0]);
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
         }
         configData[0] = "Font = \"" + configData[0] + "\"";
 
-        //taille de la police
+        //font size
         configData[1].replace("FontSize = \"", "");
         configData[1].replace("\"", "");
         if (configData[1].toInt())
@@ -138,7 +138,7 @@ int main(int argc, char *argv[])
         QString theme = configData[3];
         configData[3] = "Theme = \"" + configData[3] + "\"";
 
-        //réécriture du fihier pour corriger les erreurs potentielles
+        //rewrite config file to correct error
         config.resize(0);
         fluxConfig << configData[0] << endl << configData[1] << endl << configData[2] << endl << configData[3];
         config.close();
@@ -146,7 +146,7 @@ int main(int argc, char *argv[])
 
     app.installTranslator(&translator);
 
-    FenPrincipale win(confFile,font, lang, theme);
+    MainWindow win(confFile,font, lang, theme);
 
     win.show();
 

@@ -1,4 +1,4 @@
-#include "editor.h"
+#include "Editor.h"
 
 Editor::Editor(QWidget *parent, QString path) : QPlainTextEdit(parent)
 {
@@ -117,7 +117,7 @@ QString Editor::getFilePath()
     return filePath;
 }
 
-void Editor::save() // sauvegarde
+void Editor::save()
 {
         QFile saveFile(filePath);
         saveFile.open(QIODevice::WriteOnly | QIODevice::Text);
@@ -129,14 +129,13 @@ void Editor::save() // sauvegarde
         setSaveState(true);
 }
 
-void Editor::imprimer() //impression
+void Editor::printFile()
 {
-    //initialisation de l'imprimante et ouverture de la boite de dialogue
-    QPrinter * imprimante = new QPrinter;
-    QPrintDialog * dialogue = new QPrintDialog(imprimante, this);
+    QPrinter * printer = new QPrinter;
+    QPrintDialog * dialog = new QPrintDialog(printer, this);
 
-    if(dialogue->exec() == QDialog::Accepted)//si ok, impression du fichier
-        print(imprimante);
+    if(dialog->exec() == QDialog::Accepted)//if ok, print file
+        print(printer);
 
 }
 

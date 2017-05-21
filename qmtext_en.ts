@@ -2,223 +2,238 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US">
 <context>
-    <name>FenPrincipale</name>
+    <name>Editor</name>
     <message>
-        <location filename="fenprincipale.cpp" line="77"/>
-        <source>Nouveau</source>
-        <translation>New</translation>
+        <location filename="Editor.h" line="44"/>
+        <source>All Files (*);; Text Files (*.txt);; C Files (*.c);; C++ Files (*.cpp);; Header Files (*.h);; Java Files (*.java);; HTML Files (*.html);; CSS Files (*.css);; PHP Files (*.php);; Javascript Files (*.js);; XML Files (*.xml);; Python Scripts (*.py);; Batch Scripts (*.bat);; Shell Scripts (*.sh)</source>
+        <translation>All Files (*);; Text Files (*.txt);; C Files (*.c);; C++ Files (*.cpp);; Header Files (*.h);; Java Files (*.java);; HTML Files (*.html);; CSS Files (*.css);; PHP Files (*.php);; Javascript Files (*.js);; XML Files (*.xml);; Python Scripts (*.py);; Batch Scripts (*.bat);; Shell Scripts (*.sh)</translation>
+    </message>
+</context>
+<context>
+    <name>MainWindow</name>
+    <message>
+        <location filename="MainWindow.cpp" line="83"/>
+        <source>New File</source>
+        <translation>New File</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="81"/>
-        <source>A Propos...</source>
-        <translation>About...</translation>
+        <location filename="MainWindow.cpp" line="87"/>
+        <source>About ...</source>
+        <translation>About ...</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="85"/>
-        <source>A propos de Qt...</source>
+        <location filename="MainWindow.cpp" line="91"/>
+        <source>About Qt...</source>
         <translation>About Qt...</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="88"/>
-        <source>Enregistrer</source>
+        <location filename="MainWindow.cpp" line="94"/>
+        <source>Save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="92"/>
-        <source>Enregistrer sous...</source>
-        <translation>Save As...</translation>
+        <location filename="MainWindow.cpp" line="98"/>
+        <source>Save As ...</source>
+        <translation>Save As ...</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="96"/>
-        <source>Annuler</source>
+        <location filename="MainWindow.cpp" line="102"/>
+        <source>Undo</source>
         <translation>Undo</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="100"/>
-        <source>Restaurer</source>
+        <location filename="MainWindow.cpp" line="106"/>
+        <source>Redo</source>
         <translation>Redo</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="104"/>
-        <source>Copier</source>
+        <location filename="MainWindow.cpp" line="110"/>
+        <source>Copy</source>
         <translation>Copy</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="108"/>
-        <source>Coller</source>
+        <location filename="MainWindow.cpp" line="114"/>
+        <source>Paste</source>
         <translation>Paste</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="112"/>
-        <source>Couper</source>
+        <location filename="MainWindow.cpp" line="118"/>
+        <source>Cut</source>
         <translation>Cut</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="116"/>
-        <source>Ouvrir...</source>
-        <translation>Open...</translation>
+        <location filename="MainWindow.cpp" line="122"/>
+        <source>Open File ...</source>
+        <translation>Open File ...</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="120"/>
-        <source>Police...</source>
-        <translation>Font...</translation>
+        <location filename="MainWindow.cpp" line="126"/>
+        <source>Font ...</source>
+        <translation>Font ...</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="123"/>
-        <source>Imprimer...</source>
-        <translation>Print...</translation>
+        <location filename="MainWindow.cpp" line="129"/>
+        <source>Print ...</source>
+        <translation>Print ...</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="127"/>
-        <source>Langue du Système</source>
+        <location filename="MainWindow.cpp" line="133"/>
+        <source>Zoom in</source>
+        <translation>Zoom in</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="137"/>
+        <source>Zoom out</source>
+        <translation>Zoom out</translation>
+    </message>
+    <message>
+        <location filename="MainWindow.cpp" line="141"/>
+        <source>System Language</source>
         <translation>System Language</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="130"/>
-        <source>Français</source>
+        <location filename="MainWindow.cpp" line="145"/>
+        <source>French</source>
         <translation>French</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="133"/>
-        <source>Anglais</source>
+        <location filename="MainWindow.cpp" line="149"/>
+        <source>English</source>
         <translation>English</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="136"/>
-        <source>Clair</source>
+        <location filename="MainWindow.cpp" line="153"/>
+        <source>Light</source>
         <translation>Light</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="139"/>
-        <source>Sombre</source>
+        <location filename="MainWindow.cpp" line="157"/>
+        <source>Dark</source>
         <translation>Dark</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="149"/>
-        <source>&amp;Fichier</source>
+        <location filename="MainWindow.cpp" line="168"/>
+        <source>&amp;File</source>
         <translation>&amp;File</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="158"/>
-        <source>&amp;Edition</source>
+        <location filename="MainWindow.cpp" line="177"/>
+        <source>&amp;Edit</source>
         <translation>&amp;Edit</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="169"/>
-        <source>&amp;Langues</source>
+        <location filename="MainWindow.cpp" line="191"/>
+        <source>&amp;Languages</source>
         <translation>&amp;Languages</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="175"/>
-        <source>&amp;Thème</source>
-        <translation>&amp;Theme</translation>
+        <location filename="MainWindow.cpp" line="197"/>
+        <source>&amp;Themes</source>
+        <translation>&amp;Themes</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="180"/>
+        <location filename="MainWindow.cpp" line="202"/>
         <source>&amp;?</source>
         <translation>&amp;?</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="188"/>
-        <source>A propos...</source>
-        <translation>About...</translation>
+        <location filename="MainWindow.cpp" line="210"/>
+        <source>About</source>
+        <translation>About</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="188"/>
-        <source>Editeur de texte réalisé par Mix&lt;br /&gt;&lt;strong&gt;Version x&lt;/strong&gt;</source>
+        <location filename="MainWindow.cpp" line="210"/>
+        <source>Text editor released by Mix&lt;br /&gt;Sorry for English mistakes, I don&apos;t speak English very well :/ &lt;br /&gt;&lt;strong&gt;Release x&lt;/strong&gt;</source>
         <translation>Text editor released by Mix&lt;br /&gt;Sorry for English mistakes, I don&apos;t speak English very well :/ &lt;br /&gt;&lt;strong&gt;Release 3.3&lt;/strong&gt;</translation>
     </message>
     <message>
-        <source>Editeur de texte réalisé par Mix&lt;br /&gt;&lt;strong&gt;Version 3.0&lt;/strong&gt;</source>
-        <translation type="vanished">Text editor released by Mix&lt;br /&gt;Sorry for English mistakes, I don&apos;t speak English very well :/ &lt;br /&gt;&lt;strong&gt;Release 3.0&lt;/strong&gt;</translation>
-    </message>
-    <message>
-        <source>Editeur de texte réalisé par Mix&lt;br /&gt;&lt;strong&gt;Version 2.0&lt;/strong&gt;</source>
-        <translation type="vanished">Text editor released by Mix&lt;br /&gt;Sorry for English mistakes, I don&apos;t speak English very well :/ &lt;br /&gt;&lt;strong&gt;Release 3.0&lt;/strong&gt;</translation>
-    </message>
-    <message>
-        <location filename="fenprincipale.cpp" line="219"/>
-        <source>Enregistrer un fichier</source>
-        <translation>Save File</translation>
-    </message>
-    <message>
-        <location filename="fenprincipale.cpp" line="268"/>
-        <source>Ouvrir un fichier</source>
+        <location filename="MainWindow.cpp" line="215"/>
+        <source>Open File</source>
         <translation>Open File</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="293"/>
-        <source>Choisissez une police</source>
+        <location filename="MainWindow.cpp" line="230"/>
+        <source>Choose a font</source>
         <translation>Choose a font</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="326"/>
-        <source>Sans Titre</source>
-        <translation>Untitled</translation>
-    </message>
-    <message>
-        <location filename="fenprincipale.cpp" line="334"/>
+        <location filename="MainWindow.cpp" line="244"/>
         <source>QMText</source>
         <translation>QMText</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="446"/>
-        <source>Ce document a été modifié.</source>
-        <translation>This document has been modified.</translation>
-    </message>
-    <message>
-        <location filename="fenprincipale.cpp" line="447"/>
-        <source>Voulez-vous enregistrer les modifications ?</source>
-        <translation>Do you want to save changes ?</translation>
-    </message>
-    <message>
-        <location filename="fenprincipale.cpp" line="457"/>
-        <location filename="fenprincipale.cpp" line="479"/>
-        <source>Redémarage nécessaire</source>
+        <location filename="MainWindow.cpp" line="315"/>
+        <location filename="MainWindow.cpp" line="347"/>
+        <source>Reboot needed</source>
         <translation>Reboot needed</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="457"/>
-        <source>Le changement de langue prendra effet au prochain démarage de QMText.</source>
-        <translation>The language change will take effect after QMText&apos;s reboot.</translation>
+        <location filename="MainWindow.cpp" line="315"/>
+        <source>The language change will take effect after QMText&apos;s next reboot.</source>
+        <translation>The language change will take effect after QMText&apos;s next reboot.</translation>
     </message>
     <message>
-        <location filename="fenprincipale.cpp" line="479"/>
-        <source>Le changement de thème prendra effet au prochain démarage de QMText.</source>
-        <translation>The theme change will take effect after QMText&apos;s reboot.</translation>
+        <location filename="MainWindow.cpp" line="347"/>
+        <source>The theme change will take effect after QMText&apos;s next reboot.</source>
+        <translation>The theme change will take effect after QMText&apos;s next reboot.</translation>
     </message>
 </context>
 <context>
     <name>QPlatformTheme</name>
     <message>
-        <location filename="main.cpp" line="11"/>
-        <source>Cancel</source>
-        <translation>Cancel</translation>
+        <location filename="main.cpp" line="15"/>
+        <source>&amp;Cancel</source>
+        <oldsource>Cancel</oldsource>
+        <translation>&amp;Cancel</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="12"/>
+        <location filename="main.cpp" line="16"/>
         <source>Apply</source>
         <translation>Apply</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="13"/>
+        <location filename="main.cpp" line="17"/>
         <source>&amp;Yes</source>
         <translation>&amp;Yes</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="14"/>
+        <location filename="main.cpp" line="18"/>
         <source>&amp;No</source>
         <translation>&amp;No</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="15"/>
+        <location filename="main.cpp" line="19"/>
         <source>OK</source>
         <translation>Ok</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="16"/>
-        <source>Save</source>
-        <translation>Save</translation>
+        <location filename="main.cpp" line="20"/>
+        <source>&amp;Save</source>
+        <oldsource>Save</oldsource>
+        <translation>&amp;Save</translation>
+    </message>
+</context>
+<context>
+    <name>Tab</name>
+    <message>
+        <location filename="Tab.cpp" line="81"/>
+        <source>Save File</source>
+        <translation>Save File</translation>
+    </message>
+    <message>
+        <location filename="Tab.cpp" line="115"/>
+        <source>Untitled</source>
+        <translation>Untitled</translation>
+    </message>
+    <message>
+        <location filename="Tab.cpp" line="179"/>
+        <source>This document has been modified.</source>
+        <translation>This document has been modified.</translation>
+    </message>
+    <message>
+        <location filename="Tab.cpp" line="180"/>
+        <source>Would you save changes ?</source>
+        <translation>Would you save changes ?</translation>
     </message>
 </context>
 </TS>

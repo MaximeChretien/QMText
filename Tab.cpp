@@ -1,4 +1,4 @@
-#include "tab.h"
+#include "Tab.h"
 
 Tab::Tab(QWidget *parent, QFont font) : QTabWidget(parent)
 {
@@ -31,7 +31,7 @@ void Tab::closeTab(int index)
         setCurrentIndex(index);
         if(!getCurrentEditor()->getSaveState())
         {
-            switch (saveMessageBox()) // boite de dialogue et actions suivant le resultat
+            switch (saveMessageBox())
             {
                 case QMessageBox::Save:
                     save();
@@ -46,7 +46,7 @@ void Tab::closeTab(int index)
 
                     break;
                 default:
-                     //normalement on peut pas y acceder
+                     //can't go here
                      break;
             }
         }
@@ -76,12 +76,11 @@ void Tab::save()
     }
 }
 
-void Tab::saveAs() // enregistrer sous
+void Tab::saveAs()
 {
-    //recuperation de l'emplacement via boite de dialogue
-    QString filePath = QFileDialog::getSaveFileName(this, tr("Enregistrer un fichier"), QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), getCurrentEditor()->getFileTypes());
+    QString filePath = QFileDialog::getSaveFileName(this, tr("Save File"), QStandardPaths::writableLocation(QStandardPaths::DesktopLocation), getCurrentEditor()->getFileTypes());
 
-    if(!filePath.isEmpty()) // verification si annulation
+    if(!filePath.isEmpty()) // test if dialog cancelled
     {
         getCurrentEditor()->setFilePath(filePath);
         getCurrentEditor()->save();
@@ -105,29 +104,29 @@ QFont Tab::getFont()
 
 QStringList Tab::getTitle(bool newTab, QString path)
 {
-    QString titre = path.section("/", -1, -1); //recuperation du nom d fichier
+    QString name = path.section("/", -1, -1); //get file name
     QString file = path;
-    #ifdef WIN32 //modification du formatage du chemin de fichier pour windows
-    file.replace("/", "\\"); // changement de "/" en "\"
+    #ifdef WIN32 //change path format for windows
+    file.replace("/", "\\"); // change "/" to "\"
     #endif
 
-    if (titre.isEmpty())
+    if (name.isEmpty())
     {
-        titre = tr("Sans Titre"); // si vide titre = "Sans Titre"
-        file = titre;
+        name = tr("Untitled"); // if file don't exist, set name to Untitled
+        file = name;
     }
 
     if(!newTab)
     {
         if(!getCurrentEditor()->getSaveState())
         {
-            titre = "* " + titre; // si non sauvegardé, ajout de "*" au debut
+            name = "* " + name; // si non sauvegardé, ajout de "*" au debut
             file = "* " + file;
         }
 
     }
 
-    QStringList list = {titre, file};
+    QStringList list = {name, file};
     return list;
 }
 
@@ -142,7 +141,7 @@ Editor *Tab::getCurrentEditor()
     return (Editor*)currentWidget();
 }
 
-//transfert des commandes vers l'editeur actuel
+//transmit command to current editor
 void Tab::copy()
 {
     getCurrentEditor()->copy();
@@ -168,17 +167,17 @@ void Tab::redo()
     getCurrentEditor()->redo();
 }
 
-void Tab::imprimer()
+void Tab::printFile()
 {
-    getCurrentEditor()->imprimer();
+    getCurrentEditor()->printFile();
 }
 
-int Tab::saveMessageBox() // boite de dialogue pour sauvegarde
+int Tab::saveMessageBox()
 {
     QMessageBox msgBox;
-    msgBox.setWindowIcon(QIcon(":/icones/icon.ico"));
-    msgBox.setText(tr("Ce document a été modifié."));
-    msgBox.setInformativeText(tr("Voulez-vous enregistrer les modifications ?"));
+    msgBox.setWindowIcon(QIcon(":/icons/icon.ico"));
+    msgBox.setText(tr("This document has been modified."));
+    msgBox.setInformativeText(tr("Would you save changes ?"));
     msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::No | QMessageBox::Cancel);
     msgBox.setDefaultButton(QMessageBox::Save);
     return msgBox.exec();

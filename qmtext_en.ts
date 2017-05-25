@@ -144,7 +144,7 @@
     <message>
         <location filename="MainWindow.cpp" line="210"/>
         <source>Text editor released by Mix&lt;br /&gt;Sorry for English mistakes, I don&apos;t speak English very well :/ &lt;br /&gt;&lt;strong&gt;Release x&lt;/strong&gt;</source>
-        <translation>Text editor released by Mix&lt;br /&gt;Sorry for English mistakes, I don&apos;t speak English very well :/ &lt;br /&gt;&lt;strong&gt;Release 3.3&lt;/strong&gt;</translation>
+        <translation>Text editor released by Mix&lt;br /&gt;Sorry for English mistakes, I don&apos;t speak English very well :/ &lt;br /&gt;&lt;strong&gt;Release 4.0&lt;/strong&gt;</translation>
     </message>
     <message>
         <location filename="MainWindow.cpp" line="215"/>

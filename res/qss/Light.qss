@@ -1,24 +1,20 @@
 QWidget, QMenuBar::item 
 {
-color: black; 
-background-color: rgb(240,240,240);
+	color: black; 
+	background-color: rgb(240,240,240);
 }
 
 QPlainTextEdit
 {
-background-color: white;
+	background-color: white;
 } 
 
 QPushButton
 {
-border: 2px solid rgb(150,150,150);
-border-radius: 6px;
-background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 rgb(240,240,240), stop: 1 rgb(240,240,240));
-min-width: 80px;
-min-height: 20px
+	background-color: white;
 } 
 
 QPushButton:hover, QMenuBar::item:selected, QMenu::item:selected
 {
-background-color: rgb(230,230,230) 
+	background-color: rgb(230,230,230);
 }

@@ -263,7 +263,7 @@ void MainWindow::closeEvent(QCloseEvent * event) //save files before quit
                 case QMessageBox::Save:
                     tabWidget->save();
                     break;
-                case QMessageBox::No:
+                case QMessageBox::Discard:
                     break;
                 case QMessageBox::Cancel:
                     cancel=true;

@@ -181,36 +181,30 @@
 <context>
     <name>QPlatformTheme</name>
     <message>
-        <location filename="main.cpp" line="15"/>
         <source>&amp;Cancel</source>
         <oldsource>Cancel</oldsource>
-        <translation>&amp;Annuler</translation>
+        <translation type="vanished">&amp;Annuler</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="16"/>
         <source>Apply</source>
-        <translation>Appliquer</translation>
+        <translation type="vanished">Appliquer</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="17"/>
         <source>&amp;Yes</source>
-        <translation>&amp;Oui</translation>
+        <translation type="vanished">&amp;Oui</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="18"/>
         <source>&amp;No</source>
-        <translation>&amp;Non</translation>
+        <translation type="vanished">&amp;Non</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="19"/>
         <source>OK</source>
-        <translation>Ok</translation>
+        <translation type="vanished">Ok</translation>
     </message>
     <message>
-        <location filename="main.cpp" line="20"/>
         <source>&amp;Save</source>
         <oldsource>Save</oldsource>
-        <translation>&amp;Enregistrer</translation>
+        <translation type="vanished">&amp;Enregistrer</translation>
     </message>
 </context>
 <context>
@@ -234,6 +228,25 @@
         <location filename="Tab.cpp" line="180"/>
         <source>Would you save changes ?</source>
         <translation>Voulez vous enregistrer les changements ?</translation>
+    </message>
+    <message>
+        <location filename="Tab.cpp" line="183"/>
+        <source>Save</source>
+        <translation>Enregistrer</translation>
+    </message>
+    <message>
+        <location filename="Tab.cpp" line="184"/>
+        <source>Don&apos;t save</source>
+        <translation>Ne pas enregistrer</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation type="vanished">Non</translation>
+    </message>
+    <message>
+        <location filename="Tab.cpp" line="185"/>
+        <source>Cancel</source>
+        <translation>Annuler</translation>
     </message>
 </context>
 </TS>

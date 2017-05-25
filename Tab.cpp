@@ -38,7 +38,7 @@ void Tab::closeTab(int index)
                     id = id - correctPosition;
                     removeTab(index);
                     break;
-                case QMessageBox::No:
+                case QMessageBox::Discard:
                     id = id - correctPosition;
                     removeTab(index);
                     break;
@@ -178,7 +178,10 @@ int Tab::saveMessageBox()
     msgBox.setWindowIcon(QIcon(":/icons/icon.ico"));
     msgBox.setText(tr("This document has been modified."));
     msgBox.setInformativeText(tr("Would you save changes ?"));
-    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::No | QMessageBox::Cancel);
+    msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
     msgBox.setDefaultButton(QMessageBox::Save);
+    msgBox.setButtonText(QMessageBox::Save, tr("Save"));
+    msgBox.setButtonText(QMessageBox::Discard, tr("Don't save"));
+    msgBox.setButtonText(QMessageBox::Cancel, tr("Cancel"));
     return msgBox.exec();
 }

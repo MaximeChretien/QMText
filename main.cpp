@@ -10,15 +10,6 @@
 int main(int argc, char *argv[])
 {
 
-
-    //unused by soft, just for translate
-    Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "&Cancel"));
-    Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "Apply"));
-    Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "&Yes"));
-    Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "&No"));
-    Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "OK"));
-    Q_UNUSED(QT_TRANSLATE_NOOP("QPlatformTheme", "&Save"));
-
     QApplication app(argc, argv);
 
     //files paths init

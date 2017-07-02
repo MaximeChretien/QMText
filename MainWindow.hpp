@@ -3,8 +3,8 @@
 
 #include <QtGui>
 #include <QtWidgets>
-#include "Editor.h"
-#include "Tab.h"
+#include "Editor.hpp"
+#include "Tab.hpp"
 
 class MainWindow : public QMainWindow
 {

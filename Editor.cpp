@@ -1,4 +1,4 @@
-#include "Editor.h"
+#include "Editor.hpp"
 
 Editor::Editor(QWidget *parent, QString path) : QPlainTextEdit(parent)
 {

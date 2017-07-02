@@ -7,9 +7,9 @@ SOURCES += \
     Tab.cpp
 
 HEADERS += \
-    Editor.h \
-    MainWindow.h \
-    Tab.h
+    Tab.hpp \
+    MainWindow.hpp \
+    Editor.hpp
 
 RESOURCES += \
     res.qrc

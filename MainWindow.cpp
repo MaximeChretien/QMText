@@ -1,4 +1,4 @@
-#include "MainWindow.h"
+#include "MainWindow.hpp"
 
 MainWindow::MainWindow(QString confFile, QFont font, QString lang, QString theme)
 {

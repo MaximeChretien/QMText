@@ -1,4 +1,4 @@
-#include "Tab.h"
+#include "Tab.hpp"
 
 Tab::Tab(QWidget *parent, QFont font) : QTabWidget(parent)
 {

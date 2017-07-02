@@ -3,7 +3,7 @@
 
 #include <QTabWidget>
 #include <QMessageBox>
-#include "Editor.h"
+#include "Editor.hpp"
 
 class Tab : public QTabWidget
 {

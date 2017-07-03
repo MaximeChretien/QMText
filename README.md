@@ -1,4 +1,4 @@
-A simple file editor made with Qt5.8
+A simple file editor made with Qt5.9.1
 
 Last release : 4.0
 

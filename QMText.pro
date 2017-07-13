@@ -4,12 +4,14 @@ SOURCES += \
     main.cpp \
     MainWindow.cpp \
     Editor.cpp \
-    Tab.cpp
+    Tab.cpp \
+    FindAndReplaceWidget.cpp
 
 HEADERS += \
     Tab.hpp \
     MainWindow.hpp \
-    Editor.hpp
+    Editor.hpp \
+    FindAndReplaceWidget.hpp
 
 RESOURCES += \
     res.qrc

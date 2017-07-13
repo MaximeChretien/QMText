@@ -14,11 +14,22 @@ MainWindow::MainWindow(QString confFile, QFont font, QString lang, QString theme
 
     tabWidget = new Tab(this,font);
 
+    findAndReplace = new FindAndReplaceWidget(this);
+    findAndReplace->hide();
+
+    //layout init
+    layout = new QVBoxLayout();
+    layout->setMargin(0);
+    layout->addWidget(tabWidget);
+    layout->addWidget(findAndReplace);
+
 
     //window init
     setMinimumSize(200,45);
     resize(700,400);
-    setCentralWidget(tabWidget);
+    QWidget *cWidget = new QWidget(this);
+    cWidget->setLayout(layout);
+    setCentralWidget(cWidget);
     setWindowIcon(QIcon(":/icons/icon.ico"));
     setAcceptDrops(true);
 
@@ -68,6 +79,10 @@ MainWindow::MainWindow(QString confFile, QFont font, QString lang, QString theme
     }
 
     connect(tabWidget, SIGNAL(currentChanged(int)), this, SLOT(changeWindowTitle()));
+    connect(findAndReplace, SIGNAL(findString(QString)), tabWidget, SLOT(findString(QString)));
+    connect(findAndReplace, SIGNAL(findAllStrings(QString)), tabWidget, SLOT(findAllStrings(QString)));
+    connect(findAndReplace, SIGNAL(replace(QString,QString)), tabWidget, SLOT(replace(QString,QString)));
+    connect(findAndReplace, SIGNAL(replaceAll(QString,QString)), tabWidget, SLOT(replaceAll(QString,QString)));
     changeWindowTitle();
 }
 
@@ -138,6 +153,10 @@ void MainWindow::createActions()
     actionZoomLess->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Minus));
     connect(actionZoomLess, SIGNAL(triggered(bool)), this, SLOT(zoomOut()));
 
+    actionFindAndReplace = new QAction(tr("Find And Replace"), this);
+    actionFindAndReplace->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F));
+    connect(actionFindAndReplace, SIGNAL(triggered(bool)), findAndReplace, SLOT(show()));
+
     actionLanguageSystem = new QAction(tr("System Language"), this);
     actionLanguageSystem->setCheckable(true);
     connect(actionLanguageSystem, SIGNAL(triggered(bool)), this, SLOT(changeLanguageSystem()));
@@ -187,6 +206,8 @@ void MainWindow::createMenus()
     edition->addSeparator();
     edition->addAction(actionZoomMore);
     edition->addAction(actionZoomLess);
+    edition->addSeparator();
+    edition->addAction(actionFindAndReplace);
 
     QMenu *langues = mnuBar->addMenu(tr("&Languages"));
     langues->setCursor(Qt::PointingHandCursor);

@@ -29,6 +29,10 @@ public slots:
     void changeTitle();
     void save();
     void saveAs();
+    void findString(QString text);
+    void findAllStrings(QString text);
+    void replace(QString findText, QString replaceText);
+    void replaceAll(QString findText, QString replaceText);
 
 private:
     QStringList filePaths;

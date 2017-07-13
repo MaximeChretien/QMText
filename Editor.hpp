@@ -28,6 +28,10 @@ public slots:
     void setFilePath(QString newPath = "");
     void save();
     void printFile();
+    void findString(QString text);
+    void findAllStrings(QString text);
+    void replace(QString findText, QString replaceText);
+    void replaceAll(QString findText, QString replaceText);
 
 protected:
     void resizeEvent(QResizeEvent *event) override;

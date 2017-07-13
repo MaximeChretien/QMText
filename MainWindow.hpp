@@ -5,6 +5,7 @@
 #include <QtWidgets>
 #include "Editor.hpp"
 #include "Tab.hpp"
+#include "FindAndReplaceWidget.hpp"
 
 class MainWindow : public QMainWindow
 {
@@ -43,7 +44,9 @@ private slots:
 
 
 private:
+    QVBoxLayout *layout;
     Tab *tabWidget;
+    FindAndReplaceWidget *findAndReplace;
     QStringList confData; //config data tab
     QMenuBar *mnuBar;
 
@@ -64,6 +67,7 @@ private:
     QAction *actionPrint;
     QAction *actionZoomMore;
     QAction *actionZoomLess;
+    QAction *actionFindAndReplace;
 
     //langues
     QAction *actionLanguageSystem;

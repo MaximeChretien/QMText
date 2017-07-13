@@ -143,3 +143,39 @@ QString Editor::getFileTypes()
 {
     return fileTypes;
 }
+
+void Editor::findString(QString text)
+{
+
+}
+
+void Editor::findAllStrings(QString text)
+{
+   QList<QTextEdit::ExtraSelection> extraSelections;
+
+   if (text.isEmpty()) {
+      setExtraSelections(extraSelections);
+      return;
+   }
+
+      QTextDocument::FindFlags flags;
+      QColor color(Qt::lightGray);
+
+      while (find(text, flags)) {
+         QTextEdit::ExtraSelection extra;
+         extra.format.setBackground(color);
+         extra.cursor = textCursor();
+         extraSelections.append(extra);
+      }
+      setExtraSelections(extraSelections);
+}
+
+void Editor::replace(QString findText, QString replaceText)
+{
+
+}
+
+void Editor::replaceAll(QString findText, QString replaceText)
+{
+
+}

@@ -59,7 +59,7 @@ void Tab::closeTab(int index)
     }
     else
     {
-       parentWidget()->close();
+       parentWidget()->parentWidget()->close(); //parentWidget of the parentWidget because there is a widget for the layout
     }
 }
 
@@ -172,6 +172,27 @@ void Tab::printFile()
     getCurrentEditor()->printFile();
 }
 
+void Tab::findString(QString text)
+{
+    getCurrentEditor()->findString(text);
+}
+
+void Tab::findAllStrings(QString text)
+{
+    getCurrentEditor()->findAllStrings(text);
+}
+
+void Tab::replace(QString findText, QString replaceText)
+{
+    getCurrentEditor()->replace(findText, replaceText);
+}
+
+void Tab::replaceAll(QString findText, QString replaceText)
+{
+    getCurrentEditor()->replaceAll(findText, replaceText);
+}
+
+//Save Message Box
 int Tab::saveMessageBox()
 {
     QMessageBox msgBox;

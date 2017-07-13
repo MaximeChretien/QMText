@@ -228,7 +228,7 @@ void MainWindow::createMenus()
 
 void MainWindow::about()
 {
-    QMessageBox::information(this, tr("About"), tr("Text editor released by Mix<br />Sorry for English mistakes, I don't speak English very well :/ <br /><strong>Release x</strong>")); //version number set with translator, more simple to change it if forgotten ^^
+    QMessageBox::information(this, tr("About"), QString(tr("Text editor released by Mix<br />Sorry for English mistakes, I don't speak English very well :/ ") + "<br /><strong>Release number: 4.1-dev</strong>"));
 }
 
 void MainWindow::open()

@@ -6,6 +6,7 @@ Tab::Tab(QWidget *parent, QFont font) : QTabWidget(parent)
     setMovable(true);
     textFont = font;
     connect(this, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
+
 }
 
 void Tab::addNewTab(QString filePath)

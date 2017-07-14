@@ -14,6 +14,8 @@ Editor::Editor(QWidget *parent, QString path) : QPlainTextEdit(parent)
     connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateLineNumberArea(QRect,int)));
 
     connect(this, SIGNAL(textChanged()), this, SLOT(setSaveState()));
+    connect(this, SIGNAL(textChanged()), this, SLOT(updateHighlight()));
+    connect(this, SIGNAL(updateRequest(const QRect&, int)), this, SLOT(updateHighlight(const QRect&, int)));
 
     updateLineNumberAreaWidth(0);
 
@@ -145,29 +147,25 @@ QString Editor::getFileTypes()
 }
 
 void Editor::findString(QString text)
-{
-
+{   
+    findAllStrings(text);
+    if(!find(text, QTextDocument::FindFlags()))
+    {
+        QTextCursor cursor(textCursor());
+        cursor.movePosition(QTextCursor::Start);
+        setTextCursor(cursor);
+        find(text, QTextDocument::FindFlags());
+    }
 }
 
 void Editor::findAllStrings(QString text)
 {
-   QList<QTextEdit::ExtraSelection> extraSelections;
-
-   if (text.isEmpty()) {
-      setExtraSelections(extraSelections);
-      return;
-   }
-
-      QTextDocument::FindFlags flags;
-      QColor color(Qt::lightGray);
-
-      while (find(text, flags)) {
-         QTextEdit::ExtraSelection extra;
-         extra.format.setBackground(color);
-         extra.cursor = textCursor();
-         extraSelections.append(extra);
-      }
-      setExtraSelections(extraSelections);
+    if(text != findAllText)
+    {
+        extraSelections = QList<QTextEdit::ExtraSelection>();
+    }
+    findAllText = text;
+    updateHighlight(QRect(), 1);
 }
 
 void Editor::replace(QString findText, QString replaceText)
@@ -178,4 +176,49 @@ void Editor::replace(QString findText, QString replaceText)
 void Editor::replaceAll(QString findText, QString replaceText)
 {
 
+}
+
+void Editor::highlight(const QString &txt, int start, int end)
+{
+    QTextDocument::FindFlags flags;
+    if (document())
+    {
+        QColor color(Qt::lightGray);
+
+        QTextCursor cursor(document());
+        cursor.setPosition(start);
+        cursor = document() -> find(txt, cursor, flags);
+
+        while (! cursor.isNull())
+        {
+            if (cursor.position() > end)
+            {
+                break;
+            }
+            QTextEdit::ExtraSelection extra;
+            extra.format.setBackground(color);
+            extra.cursor = cursor;
+            extraSelections.append(extra);
+
+            cursor = document() -> find(txt, cursor, flags);
+        }
+        setExtraSelections(extraSelections);
+    }
+
+}
+
+
+void Editor::updateHighlight(const QRect& rect, int dy)
+{
+    if (dy != 0)
+    {
+         QTextCursor cursor = cursorForPosition(QPoint(0, 0));
+         QPoint pageY = viewport() ? QPoint(viewport() -> width() - 1, viewport() -> height() - 1) : QPoint(0, 0);
+         highlight(findAllText, cursor.position(), cursorForPosition(pageY).position());
+    }
+}
+
+void Editor::updateHighlight()
+{
+    updateHighlight(QRect(), 1);
 }

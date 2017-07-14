@@ -22,6 +22,7 @@ public:
     bool getSaveState();
     QString getFilePath();
     QString getFileTypes();
+    void highlight(const QString& txt, int start, int end);
 
 public slots:
     void setSaveState(bool state = false);
@@ -33,16 +34,20 @@ public slots:
     void replace(QString findText, QString replaceText);
     void replaceAll(QString findText, QString replaceText);
 
+
 protected:
     void resizeEvent(QResizeEvent *event) override;
 
 private slots:
     void updateLineNumberAreaWidth(int newBlockCount);
     void updateLineNumberArea(const QRect &, int);
-
+    void updateHighlight();
+    void updateHighlight(const QRect& rect, int dy);
 
 private:
     QWidget *lineNumberArea;
+    QString findAllText;
+    QList<QTextEdit::ExtraSelection> extraSelections;
     bool saveState; //true = save, false = not save
     QString filePath;
     QString fileTypes = tr("All Files (*);; Text Files (*.txt);; C Files (*.c);; C++ Files (*.cpp);; Header Files (*.h);; Java Files (*.java);; HTML Files (*.html);; CSS Files (*.css);; PHP Files (*.php);; Javascript Files (*.js);; XML Files (*.xml);; Python Scripts (*.py);; Batch Scripts (*.bat);; Shell Scripts (*.sh)");

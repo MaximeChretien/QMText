@@ -79,6 +79,8 @@ MainWindow::MainWindow(QString confFile, QFont font, QString lang, QString theme
     }
 
     connect(tabWidget, SIGNAL(currentChanged(int)), this, SLOT(changeWindowTitle()));
+
+    //transmit findAndReplace signals to tabWidget
     connect(findAndReplace, SIGNAL(findString(QString)), tabWidget, SLOT(findString(QString)));
     connect(findAndReplace, SIGNAL(findAllStrings(QString)), tabWidget, SLOT(findAllStrings(QString)));
     connect(findAndReplace, SIGNAL(replace(QString,QString)), tabWidget, SLOT(replace(QString,QString)));

@@ -121,7 +121,7 @@ QStringList Tab::getTitle(bool newTab, QString path)
     {
         if(!getCurrentEditor()->getSaveState())
         {
-            name = "* " + name; // si non sauvegardé, ajout de "*" au debut
+            name = "* " + name; // if it's not saved, add "*" a the beginning
             file = "* " + file;
         }
 
@@ -142,7 +142,7 @@ Editor *Tab::getCurrentEditor()
     return (Editor*)currentWidget();
 }
 
-//transmit command to current editor
+//transmit signals to current editor slots
 void Tab::copy()
 {
     getCurrentEditor()->copy();

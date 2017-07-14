@@ -2,12 +2,15 @@
 
 FindAndReplaceWidget::FindAndReplaceWidget(QWidget *parent) : QWidget(parent)
 {
+    //lables init
     labelFind = new QLabel(tr("Find : "), this);
     labelReplace = new QLabel(tr("Replace with : "), this);
 
+    //line edit init
     lineEditFind = new QLineEdit(this);
     lineEditReplace = new QLineEdit(this);
 
+    //buttons init
     buttonFind = new QPushButton(tr("Find"), this);
     buttonFindAll = new QPushButton(tr("FindAll"), this);
     buttonReplace = new QPushButton(tr("Replace"), this);
@@ -15,7 +18,9 @@ FindAndReplaceWidget::FindAndReplaceWidget(QWidget *parent) : QWidget(parent)
     buttonClose = new QPushButton(tr("X"), this);
     buttonClose->setMaximumSize(20,20);
 
+    //grid init
     layout = new QGridLayout(this);
+    layout->setMargin(5);
     layout->addWidget(labelFind, 0, 0);
     layout->addWidget(lineEditFind, 0, 1);
     layout->addWidget(buttonFind, 0, 2);
@@ -26,11 +31,9 @@ FindAndReplaceWidget::FindAndReplaceWidget(QWidget *parent) : QWidget(parent)
     layout->addWidget(buttonReplace, 1, 2);
     layout->addWidget(buttonReplaceAll, 1, 3);
 
-    layout->setMargin(5);
-
     setLayout(layout);
 
-
+    //emit signals when button are pushed
     connect(buttonFind, SIGNAL(clicked(bool)), this, SLOT(findClicked()));
     connect(buttonFindAll, SIGNAL(clicked(bool)), this, SLOT(findAllClicked()));
     connect(lineEditFind, SIGNAL(textChanged(QString)), this, SLOT(findAllClicked()));
@@ -38,6 +41,7 @@ FindAndReplaceWidget::FindAndReplaceWidget(QWidget *parent) : QWidget(parent)
     connect(buttonReplace, SIGNAL(clicked(bool)), this, SLOT(replaceClicked()));
     connect(buttonReplaceAll, SIGNAL(clicked(bool)), this, SLOT(replaceAllClicked()));
 
+    //hide and reset widget when it is closed
     connect(buttonClose, SIGNAL(clicked(bool)), this, SLOT(hide()));
     connect(buttonClose, SIGNAL(clicked(bool)), lineEditFind, SLOT(clear()));
     connect(buttonClose, SIGNAL(clicked(bool)), lineEditReplace, SLOT(clear()));

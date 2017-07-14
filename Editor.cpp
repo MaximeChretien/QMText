@@ -4,16 +4,20 @@ Editor::Editor(QWidget *parent, QString path) : QPlainTextEdit(parent)
 {
     filePath = path;
 
+    //Editor properties
     setLineWrapMode(QPlainTextEdit::NoWrap);
     setFrameStyle(QFrame::NoFrame);
     setAcceptDrops(false);
 
     lineNumberArea = new LineNumberArea(this);
 
+    //Update and scroll line counter
     connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateLineNumberAreaWidth(int)));
     connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateLineNumberArea(QRect,int)));
 
     connect(this, SIGNAL(textChanged()), this, SLOT(setSaveState()));
+
+    //update highlight when it's needed
     connect(this, SIGNAL(textChanged()), this, SLOT(updateHighlight()));
     connect(this, SIGNAL(updateRequest(const QRect&, int)), this, SLOT(updateHighlight(const QRect&, int)));
 
@@ -148,7 +152,9 @@ QString Editor::getFileTypes()
 
 void Editor::findString(QString text)
 {   
-    findAllStrings(text);
+    findAllStrings(text); //highlight all matching strings
+
+    //if nothing find, go to the beginning of the file and try to find the string
     if(!find(text, QTextDocument::FindFlags()))
     {
         QTextCursor cursor(textCursor());
@@ -174,7 +180,9 @@ void Editor::replace(QString findText, QString replaceText)
     if (cursorReplace.hasSelection())
         cursorReplace.insertText(replaceText);
 
-    findAllStrings(findText);
+    findAllStrings(findText); //highlight all matching strings
+
+    //if nothing find, go to the beginning of the file and try to find the string
     if(!find(findText, QTextDocument::FindFlags()))
     {
         QTextCursor cursor(textCursor());
@@ -201,7 +209,7 @@ void Editor::replaceAll(QString findText, QString replaceText)
     }
 }
 
-void Editor::highlight(const QString &txt, int start, int end)
+void Editor::highlight(const QString &txt, int start, int end) //Highlight for FindAllStrings function
 {
     QTextDocument::FindFlags flags;
     if (document())
@@ -231,7 +239,7 @@ void Editor::highlight(const QString &txt, int start, int end)
 }
 
 
-void Editor::updateHighlight(const QRect& rect, int dy)
+void Editor::updateHighlight(const QRect& rect, int dy) //update highlight only on the text we see
 {
     if (dy != 0)
     {

@@ -170,12 +170,35 @@ void Editor::findAllStrings(QString text)
 
 void Editor::replace(QString findText, QString replaceText)
 {
+    QTextCursor cursorReplace(textCursor());
+    if (cursorReplace.hasSelection())
+        cursorReplace.insertText(replaceText);
 
+    findAllStrings(findText);
+    if(!find(findText, QTextDocument::FindFlags()))
+    {
+        QTextCursor cursor(textCursor());
+        cursor.movePosition(QTextCursor::Start);
+        setTextCursor(cursor);
+        find(findText, QTextDocument::FindFlags());
+    }
 }
 
 void Editor::replaceAll(QString findText, QString replaceText)
 {
+    QTextDocument::FindFlags flags;
+    if (document())
+    {
+        QTextCursor cursor(document());
+        cursor.movePosition(QTextCursor::Start);
 
+        while (! cursor.isNull())
+        {
+            cursor = document() -> find(findText, cursor, flags);
+            if(cursor.hasSelection())
+                cursor.insertText(replaceText);
+        }
+    }
 }
 
 void Editor::highlight(const QString &txt, int start, int end)

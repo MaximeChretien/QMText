@@ -230,7 +230,7 @@ void MainWindow::createMenus()
 
 void MainWindow::about()
 {
-    QMessageBox::information(this, tr("About"), QString(tr("Text editor released by Mix<br />Sorry for English mistakes, I don't speak English very well :/ ") + "<br /><strong>Release number: 4.1-dev</strong>"));
+    QMessageBox::information(this, tr("About"), QString(tr("Text editor released by Mix<br />Sorry for English mistakes, I don't speak English very well :/ ") + "<br /><strong>Release number: 4.1</strong>"));
 }
 
 void MainWindow::open()

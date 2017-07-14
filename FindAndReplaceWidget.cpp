@@ -12,10 +12,10 @@ FindAndReplaceWidget::FindAndReplaceWidget(QWidget *parent) : QWidget(parent)
 
     //buttons init
     buttonFind = new QPushButton(tr("Find"), this);
-    buttonFindAll = new QPushButton(tr("FindAll"), this);
+    buttonFindAll = new QPushButton(tr("Find All"), this);
     buttonReplace = new QPushButton(tr("Replace"), this);
-    buttonReplaceAll = new QPushButton(tr("ReplaceAll"), this);
-    buttonClose = new QPushButton(tr("X"), this);
+    buttonReplaceAll = new QPushButton(tr("Replace All"), this);
+    buttonClose = new QPushButton("X", this);
     buttonClose->setMaximumSize(20,20);
 
     //grid init

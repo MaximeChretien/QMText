@@ -30,11 +30,17 @@ FindAndReplaceWidget::FindAndReplaceWidget(QWidget *parent) : QWidget(parent)
 
     setLayout(layout);
 
+
     connect(buttonFind, SIGNAL(clicked(bool)), this, SLOT(findClicked()));
     connect(buttonFindAll, SIGNAL(clicked(bool)), this, SLOT(findAllClicked()));
+    connect(lineEditFind, SIGNAL(textChanged(QString)), this, SLOT(findAllClicked()));
+
     connect(buttonReplace, SIGNAL(clicked(bool)), this, SLOT(replaceClicked()));
     connect(buttonReplaceAll, SIGNAL(clicked(bool)), this, SLOT(replaceAllClicked()));
+
     connect(buttonClose, SIGNAL(clicked(bool)), this, SLOT(hide()));
+    connect(buttonClose, SIGNAL(clicked(bool)), lineEditFind, SLOT(clear()));
+    connect(buttonClose, SIGNAL(clicked(bool)), lineEditReplace, SLOT(clear()));
 }
 
 void FindAndReplaceWidget::findClicked()

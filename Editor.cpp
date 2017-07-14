@@ -220,5 +220,6 @@ void Editor::updateHighlight(const QRect& rect, int dy)
 
 void Editor::updateHighlight()
 {
+    extraSelections = QList<QTextEdit::ExtraSelection>();
     updateHighlight(QRect(), 1);
 }

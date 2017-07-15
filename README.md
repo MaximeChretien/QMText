@@ -1,6 +1,14 @@
 A simple file editor made with Qt5.9.1
 
-Last release : 4.0
+Last release : 4.1
+
+
+Changelogs:
+
+- Add Find And Replace
+
+- Minor fixes
+
 
 Download :
 

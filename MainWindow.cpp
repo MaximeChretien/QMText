@@ -322,6 +322,9 @@ void MainWindow::dropEvent(QDropEvent *event) // drop
 {
     QString filePath = event->mimeData()->urls().at(0).toString().right(event->mimeData()->urls().at(0).toString().size()-7);
     event->accept();
+    #ifdef WIN32 //change path format for windows
+    filePath.replace("/", "\\"); // change "/" to "\"
+    #endif
     newFile(filePath);
 }
 

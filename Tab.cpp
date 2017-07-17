@@ -106,6 +106,9 @@ QFont Tab::getFont()
 QStringList Tab::getTitle(bool newTab, QString path)
 {
     QString name = path.section("/", -1, -1); //get file name
+    #ifdef WIN32 //change name format for windows
+    name = name.section("\\", -1, -1);
+    #endif
     QString file = path;
     #ifdef WIN32 //change path format for windows
     file.replace("/", "\\"); // change "/" to "\"

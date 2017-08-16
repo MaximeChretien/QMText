@@ -1,10 +1,22 @@
-QWidget, QMenuBar::item 
+QObject
 {
 	color: white; 
-	background-color: rgb(50,50,50);
-} 
+	background: rgb(50,50,50);
+}
 
-QPlainTextEdit 
+QTabWidget::pane 
+{
+    background: rgb(50,50,50);
+}
+
+
+QTabBar::tab
+{
+	background-color: rgb(40,40,40);
+}
+
+
+QPlainTextEdit
 {
 	background-color: black;
 }

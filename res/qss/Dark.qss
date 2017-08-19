@@ -19,6 +19,7 @@ QTabBar::tab
 QPlainTextEdit
 {
 	background-color: black;
+	selection-background-color: #1E90FF;
 }
 
 QPushButton

@@ -97,16 +97,22 @@ void MainWindow::createActions()
      * - connect to slot
      */
 
+    createActionsFile();
+    createActionsEdit();
+    createActionsLanguages();
+    createActionsTheme();
+    createActionsAbout();
+}
+
+void MainWindow::createActionsFile()
+{
     actionNew = new QAction(tr("New File"), this);
     actionNew->setShortcut(QKeySequence::New);
     connect(actionNew, SIGNAL(triggered(bool)), this, SLOT(newFile()));
 
-    actionAbout = new QAction(tr("About ..."), this);
-    actionAbout->setShortcut(QKeySequence::HelpContents);
-    connect(actionAbout, SIGNAL(triggered(bool)), this, SLOT(about()));
-
-    actionAboutQt = new QAction(tr("About Qt..."), this);
-    connect(actionAboutQt, SIGNAL(triggered(bool)), qApp, SLOT(aboutQt()));
+    actionOpen = new QAction(tr("Open File ..."), this);
+    actionOpen->setShortcut(QKeySequence::Open);
+    connect(actionOpen, SIGNAL(triggered(bool)), this, SLOT(open()));
 
     actionSave = new QAction(tr("Save"), this);
     actionSave->setShortcut(QKeySequence::Save);
@@ -116,6 +122,14 @@ void MainWindow::createActions()
     actionSaveAs->setShortcut(QKeySequence("Ctrl+Maj+S"));
     connect(actionSaveAs, SIGNAL(triggered(bool)), tabWidget, SLOT(saveAs()));
 
+    actionPrint = new QAction(tr("Print ..."), this);
+    actionPrint->setShortcut(QKeySequence::Print);
+    connect(actionPrint, SIGNAL(triggered(bool)), tabWidget, SLOT(printFile()));
+
+}
+
+void MainWindow::createActionsEdit()
+{
     actionUndo = new QAction(tr("Undo"), this);
     actionUndo->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Z));
     connect(actionUndo, SIGNAL(triggered(bool)), tabWidget , SLOT(undo()));
@@ -123,6 +137,10 @@ void MainWindow::createActions()
     actionRedo = new QAction(tr("Redo"), this);
     actionRedo->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Y));
     connect(actionRedo, SIGNAL(triggered(bool)), tabWidget, SLOT(redo()));
+
+    actionCut = new QAction(tr("Cut"), this);
+    actionCut->setShortcut(QKeySequence::Cut);
+    connect(actionCut, SIGNAL(triggered(bool)), tabWidget, SLOT(cut()));
 
     actionCopy = new QAction(tr("Copy"), this);
     actionCopy->setShortcut(QKeySequence::Copy);
@@ -132,20 +150,8 @@ void MainWindow::createActions()
     actionPaste->setShortcut(QKeySequence::Paste);
     connect(actionPaste, SIGNAL(triggered(bool)), tabWidget, SLOT(paste()));
 
-    actionCut = new QAction(tr("Cut"), this);
-    actionCut->setShortcut(QKeySequence::Cut);
-    connect(actionCut, SIGNAL(triggered(bool)), tabWidget, SLOT(cut()));
-
-    actionOpen = new QAction(tr("Open File ..."), this);
-    actionOpen->setShortcut(QKeySequence::Open);
-    connect(actionOpen, SIGNAL(triggered(bool)), this, SLOT(open()));
-
     actionFont = new QAction(tr("Font ..."), this);
     connect(actionFont, SIGNAL(triggered(bool)), this, SLOT(changeFont()));
-
-    actionPrint = new QAction(tr("Print ..."), this);
-    actionPrint->setShortcut(QKeySequence::Print);
-    connect(actionPrint, SIGNAL(triggered(bool)), tabWidget, SLOT(printFile()));
 
     actionZoomMore = new QAction(tr("Zoom in"),this);
     actionZoomMore->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Plus));
@@ -158,7 +164,10 @@ void MainWindow::createActions()
     actionFindAndReplace = new QAction(tr("Find And Replace"), this);
     actionFindAndReplace->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_F));
     connect(actionFindAndReplace, SIGNAL(triggered(bool)), findAndReplace, SLOT(show()));
+}
 
+void MainWindow::createActionsLanguages()
+{
     actionLanguageSystem = new QAction(tr("System Language"), this);
     actionLanguageSystem->setCheckable(true);
     connect(actionLanguageSystem, SIGNAL(triggered(bool)), this, SLOT(changeLanguageSystem()));
@@ -170,7 +179,10 @@ void MainWindow::createActions()
     actionLanguageEn = new QAction(tr("English"), this);
     actionLanguageEn->setCheckable(true);
     connect(actionLanguageEn, SIGNAL(triggered(bool)), this, SLOT(changeLanguageEn()));
+}
 
+void MainWindow::createActionsTheme()
+{
     actionThemeLight = new QAction(tr("Light"), this);
     actionThemeLight->setCheckable(true);
     connect(actionThemeLight, SIGNAL(triggered(bool)), this, SLOT(changeThemeLight()));
@@ -178,7 +190,16 @@ void MainWindow::createActions()
     actionThemeDark = new QAction(tr("Dark"), this);
     actionThemeDark->setCheckable(true);
     connect(actionThemeDark, SIGNAL(triggered(bool)), this, SLOT(changeThemeDark()));
+}
 
+void MainWindow::createActionsAbout()
+{
+    actionAbout = new QAction(tr("About ..."), this);
+    actionAbout->setShortcut(QKeySequence::HelpContents);
+    connect(actionAbout, SIGNAL(triggered(bool)), this, SLOT(about()));
+
+    actionAboutQt = new QAction(tr("About Qt..."), this);
+    connect(actionAboutQt, SIGNAL(triggered(bool)), qApp, SLOT(aboutQt()));
 }
 
 void MainWindow::createMenus()

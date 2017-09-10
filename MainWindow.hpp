@@ -13,8 +13,15 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QString confFile, QFont font, QString lang, QString theme);
+
     void createMenus();
     void createActions();
+    void createActionsFile();
+    void createActionsEdit();
+    void createActionsLanguages();
+    void createActionsTheme();
+    void createActionsAbout();
+
     void changeLanguage(QString langue);
     void changeTheme(QString theme);
 
@@ -50,33 +57,37 @@ private:
     QStringList confData; //config data tab
     QMenuBar *mnuBar;
 
-    //actions
+    //actions file
     QAction *actionNew;
-    QAction *actionQuit;
-    QAction *actionAbout;
-    QAction *actionAboutQt;
+    QAction *actionOpen;
     QAction *actionSave;
     QAction *actionSaveAs;
+    QAction *actionPrint;
+    QAction *actionQuit;
+
+    //actions edit
     QAction *actionUndo;
     QAction *actionRedo;
+    QAction *actionCut;
     QAction *actionCopy;
     QAction *actionPaste;
-    QAction *actionCut;
-    QAction *actionOpen;
     QAction *actionFont;
-    QAction *actionPrint;
     QAction *actionZoomMore;
     QAction *actionZoomLess;
     QAction *actionFindAndReplace;
 
-    //langues
+    //actions languages
     QAction *actionLanguageSystem;
     QAction *actionLanguageFr;
     QAction *actionLanguageEn;
 
-    //thèmes
+    //actions themes
     QAction *actionThemeLight;
     QAction *actionThemeDark;
+
+    //actions about
+    QAction *actionAbout;
+    QAction *actionAboutQt;
 
     QString configFile; //config file path
 };

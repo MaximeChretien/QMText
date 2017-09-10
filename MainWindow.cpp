@@ -126,6 +126,9 @@ void MainWindow::createActionsFile()
     actionPrint->setShortcut(QKeySequence::Print);
     connect(actionPrint, SIGNAL(triggered(bool)), tabWidget, SLOT(printFile()));
 
+    actionQuit = new QAction(tr("Quit"), this);
+    actionQuit->setShortcut(QKeySequence::Quit);
+    connect(actionQuit, SIGNAL(triggered(bool)), this, SLOT(close()));
 }
 
 void MainWindow::createActionsEdit()
@@ -215,6 +218,8 @@ void MainWindow::createMenus()
     fileMenu->addAction(actionSaveAs);
     fileMenu->addSeparator();
     fileMenu->addAction(actionPrint);
+    fileMenu->addSeparator();
+    fileMenu->addAction(actionQuit);
 
     QMenu *editMenu = mnuBar->addMenu(tr("&Edit"));
     editMenu->setCursor(Qt::PointingHandCursor);

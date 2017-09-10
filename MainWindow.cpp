@@ -186,46 +186,46 @@ void MainWindow::createMenus()
     mnuBar->setCursor(Qt::PointingHandCursor);
 
 
-    QMenu *fichier = mnuBar->addMenu(tr("&File"));
-    fichier->setCursor(Qt::PointingHandCursor);
-    fichier->addAction(actionNew);
-    fichier->addAction(actionOpen);
-    fichier->addAction(actionSave);
-    fichier->addAction(actionSaveAs);
-    fichier->addSeparator();
-    fichier->addAction(actionPrint);
+    QMenu *fileMenu = mnuBar->addMenu(tr("&File"));
+    fileMenu->setCursor(Qt::PointingHandCursor);
+    fileMenu->addAction(actionNew);
+    fileMenu->addAction(actionOpen);
+    fileMenu->addAction(actionSave);
+    fileMenu->addAction(actionSaveAs);
+    fileMenu->addSeparator();
+    fileMenu->addAction(actionPrint);
 
-    QMenu *edition = mnuBar->addMenu(tr("&Edit"));
-    edition->setCursor(Qt::PointingHandCursor);
-    edition->addAction(actionUndo);
-    edition->addAction(actionRedo);
-    edition->addSeparator();
-    edition->addAction(actionCut);
-    edition->addAction(actionCopy);
-    edition->addAction(actionPaste);
-    edition->addSeparator();
-    edition->addAction(actionFont);
-    edition->addSeparator();
-    edition->addAction(actionZoomMore);
-    edition->addAction(actionZoomLess);
-    edition->addSeparator();
-    edition->addAction(actionFindAndReplace);
+    QMenu *editMenu = mnuBar->addMenu(tr("&Edit"));
+    editMenu->setCursor(Qt::PointingHandCursor);
+    editMenu->addAction(actionUndo);
+    editMenu->addAction(actionRedo);
+    editMenu->addSeparator();
+    editMenu->addAction(actionCut);
+    editMenu->addAction(actionCopy);
+    editMenu->addAction(actionPaste);
+    editMenu->addSeparator();
+    editMenu->addAction(actionFont);
+    editMenu->addSeparator();
+    editMenu->addAction(actionZoomMore);
+    editMenu->addAction(actionZoomLess);
+    editMenu->addSeparator();
+    editMenu->addAction(actionFindAndReplace);
 
-    QMenu *langues = mnuBar->addMenu(tr("&Languages"));
-    langues->setCursor(Qt::PointingHandCursor);
-    langues->addAction(actionLanguageSystem);
-    langues->addAction(actionLanguageFr);
-    langues->addAction(actionLanguageEn);
+    QMenu *languagesMenu = mnuBar->addMenu(tr("&Languages"));
+    languagesMenu->setCursor(Qt::PointingHandCursor);
+    languagesMenu->addAction(actionLanguageSystem);
+    languagesMenu->addAction(actionLanguageFr);
+    languagesMenu->addAction(actionLanguageEn);
 
-    QMenu *theme = mnuBar->addMenu(tr("&Themes"));
-    theme->setCursor((Qt::PointingHandCursor));
-    theme->addAction(actionThemeLight);
-    theme->addAction(actionThemeDark);
+    QMenu *themeMenu = mnuBar->addMenu(tr("&Themes"));
+    themeMenu->setCursor((Qt::PointingHandCursor));
+    themeMenu->addAction(actionThemeLight);
+    themeMenu->addAction(actionThemeDark);
 
-    QMenu *aide = mnuBar->addMenu(tr("&?"));
-    aide->setCursor(Qt::PointingHandCursor);
-    aide->addAction(actionAbout);
-    aide->addAction(actionAboutQt);
+    QMenu *aboutMenu = mnuBar->addMenu(tr("&?"));
+    aboutMenu->setCursor(Qt::PointingHandCursor);
+    aboutMenu->addAction(actionAbout);
+    aboutMenu->addAction(actionAboutQt);
 }
 
 void MainWindow::about()

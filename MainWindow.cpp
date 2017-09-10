@@ -99,6 +99,7 @@ void MainWindow::createActions()
 
     createActionsFile();
     createActionsEdit();
+    createActionsSyntax();
     createActionsLanguages();
     createActionsTheme();
     createActionsAbout();
@@ -169,6 +170,54 @@ void MainWindow::createActionsEdit()
     connect(actionFindAndReplace, SIGNAL(triggered(bool)), findAndReplace, SLOT(show()));
 }
 
+void MainWindow::createActionsSyntax()
+{
+    actionCpp = new QAction("C++", this);
+    actionCpp->setCheckable(true);
+    actionCpp->setDisabled(true);
+    connect(actionCpp, SIGNAL(triggered(bool)), this, SLOT());
+
+    actionCss = new QAction("CSS", this);
+    actionCss->setCheckable(true);
+    actionCss->setDisabled(true);
+    connect(actionCss, SIGNAL(triggered(bool)), this, SLOT());
+
+    actionHtml = new QAction("HTML", this);
+    actionHtml->setCheckable(true);
+    actionHtml->setDisabled(true);
+    connect(actionHtml, SIGNAL(triggered(bool)), this, SLOT());
+
+    actionJava = new QAction("Java", this);
+    actionJava->setCheckable(true);
+    actionJava->setDisabled(true);
+    connect(actionJava, SIGNAL(triggered(bool)), this, SLOT());
+
+    actionPhp = new QAction("PHP", this);
+    actionPhp->setCheckable(true);
+    actionPhp->setDisabled(true);
+    connect(actionPhp, SIGNAL(triggered(bool)), this, SLOT());
+
+    actionPlainText = new QAction("Plain Text", this);
+    actionPlainText->setCheckable(true);
+    actionPlainText->setChecked(true);
+    connect(actionPlainText, SIGNAL(triggered(bool)), this, SLOT());
+
+    actionPython = new QAction("Python", this);
+    actionPython->setCheckable(true);
+    actionPython->setDisabled(true);
+    connect(actionPython, SIGNAL(triggered(bool)), this, SLOT());
+
+    actionShell = new QAction("Shell Script", this);
+    actionShell->setCheckable(true);
+    actionShell->setDisabled(true);
+    connect(actionShell, SIGNAL(triggered(bool)), this, SLOT());
+
+    actionXml = new QAction("XML", this);
+    actionXml->setCheckable(true);
+    actionXml->setDisabled(true);
+    connect(actionXml, SIGNAL(triggered(bool)), this, SLOT());
+}
+
 void MainWindow::createActionsLanguages()
 {
     actionLanguageSystem = new QAction(tr("System Language"), this);
@@ -209,7 +258,6 @@ void MainWindow::createMenus()
 {
     mnuBar->setCursor(Qt::PointingHandCursor);
 
-
     QMenu *fileMenu = mnuBar->addMenu(tr("&File"));
     fileMenu->setCursor(Qt::PointingHandCursor);
     fileMenu->addAction(actionNew);
@@ -236,6 +284,18 @@ void MainWindow::createMenus()
     editMenu->addAction(actionZoomLess);
     editMenu->addSeparator();
     editMenu->addAction(actionFindAndReplace);
+
+    QMenu *syntaxMenu = mnuBar->addMenu(tr("&Syntax (WIP)"));
+    syntaxMenu->setCursor(Qt::PointingHandCursor);
+    syntaxMenu->addAction(actionCpp);
+    syntaxMenu->addAction(actionCss);
+    syntaxMenu->addAction(actionHtml);
+    syntaxMenu->addAction(actionJava);
+    syntaxMenu->addAction(actionPhp);
+    syntaxMenu->addAction(actionPlainText);
+    syntaxMenu->addAction(actionPython);
+    syntaxMenu->addAction(actionShell);
+    syntaxMenu->addAction(actionXml);
 
     QMenu *languagesMenu = mnuBar->addMenu(tr("&Languages"));
     languagesMenu->setCursor(Qt::PointingHandCursor);

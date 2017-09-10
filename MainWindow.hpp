@@ -18,6 +18,7 @@ public:
     void createActions();
     void createActionsFile();
     void createActionsEdit();
+    void createActionsSyntax();
     void createActionsLanguages();
     void createActionsTheme();
     void createActionsAbout();
@@ -75,6 +76,17 @@ private:
     QAction *actionZoomMore;
     QAction *actionZoomLess;
     QAction *actionFindAndReplace;
+
+    //actions syntax
+    QAction *actionCpp;
+    QAction *actionCss;
+    QAction *actionHtml;
+    QAction *actionJava;
+    QAction *actionPhp;
+    QAction *actionPlainText;
+    QAction *actionPython;
+    QAction *actionShell;
+    QAction *actionXml;
 
     //actions languages
     QAction *actionLanguageSystem;

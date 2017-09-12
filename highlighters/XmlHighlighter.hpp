@@ -1,11 +1,17 @@
 #ifndef XMLHIGHLIGHTER_H
 #define XMLHIGHLIGHTER_H
 
+#include <QSyntaxHighlighter>
+#include <QTextCharFormat>
 
-class XmlHighlighter
+QT_BEGIN_NAMESPACE
+class QTextDocument;
+QT_END_NAMESPACE
+
+class XmlHighlighter : public QSyntaxHighlighter
 {
 public:
-    XmlHighlighter();
+    XmlHighlighter(QTextDocument *parent = 0);
 };
 
 #endif // XMLHIGHLIGHTER_H

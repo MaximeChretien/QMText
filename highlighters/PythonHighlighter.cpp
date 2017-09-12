@@ -1,6 +1,6 @@
 #include "PythonHighlighter.hpp"
 
-PythonHighlighter::PythonHighlighter()
+PythonHighlighter::PythonHighlighter(QTextDocument *parent) : QSyntaxHighlighter(parent)
 {
 
 }

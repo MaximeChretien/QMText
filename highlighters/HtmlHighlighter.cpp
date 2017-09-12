@@ -1,6 +1,6 @@
 #include "HtmlHighlighter.hpp"
 
-HtmlHighlighter::HtmlHighlighter()
+HtmlHighlighter::HtmlHighlighter(QTextDocument *parent) : QSyntaxHighlighter(parent)
 {
 
 }

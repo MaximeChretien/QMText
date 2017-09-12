@@ -17,6 +17,8 @@ MainWindow::MainWindow(QString confFile, QFont font, QString lang, QString theme
     findAndReplace = new FindAndReplaceWidget(this);
     findAndReplace->hide();
 
+    syntaxHighlighter = new Highlighter();
+
     //layout init
     layout = new QVBoxLayout();
     layout->setMargin(0);
@@ -174,48 +176,48 @@ void MainWindow::createActionsSyntax()
 {
     actionCpp = new QAction("C++", this);
     actionCpp->setCheckable(true);
-    actionCpp->setDisabled(true);
-    connect(actionCpp, SIGNAL(triggered(bool)), this, SLOT());
+    //actionCpp->setDisabled(true);
+    connect(actionCpp, SIGNAL(triggered(bool)), this, SLOT(changeSyntaxCpp()));
 
     actionCss = new QAction("CSS", this);
     actionCss->setCheckable(true);
     actionCss->setDisabled(true);
-    connect(actionCss, SIGNAL(triggered(bool)), this, SLOT());
+    connect(actionCss, SIGNAL(triggered(bool)), this, SLOT(changeSyntaxCss()));
 
     actionHtml = new QAction("HTML", this);
     actionHtml->setCheckable(true);
     actionHtml->setDisabled(true);
-    connect(actionHtml, SIGNAL(triggered(bool)), this, SLOT());
+    connect(actionHtml, SIGNAL(triggered(bool)), this, SLOT(changeSyntaxHtml()));
 
     actionJava = new QAction("Java", this);
     actionJava->setCheckable(true);
     actionJava->setDisabled(true);
-    connect(actionJava, SIGNAL(triggered(bool)), this, SLOT());
+    connect(actionJava, SIGNAL(triggered(bool)), this, SLOT(changeSyntaxJava()));
 
     actionPhp = new QAction("PHP", this);
     actionPhp->setCheckable(true);
     actionPhp->setDisabled(true);
-    connect(actionPhp, SIGNAL(triggered(bool)), this, SLOT());
+    connect(actionPhp, SIGNAL(triggered(bool)), this, SLOT(changeSyntaxPhp()));
 
     actionPlainText = new QAction("Plain Text", this);
     actionPlainText->setCheckable(true);
     actionPlainText->setChecked(true);
-    connect(actionPlainText, SIGNAL(triggered(bool)), this, SLOT());
+    connect(actionPlainText, SIGNAL(triggered(bool)), this, SLOT(changeSyntaxPlainText()));
 
     actionPython = new QAction("Python", this);
     actionPython->setCheckable(true);
     actionPython->setDisabled(true);
-    connect(actionPython, SIGNAL(triggered(bool)), this, SLOT());
+    connect(actionPython, SIGNAL(triggered(bool)), this, SLOT(changeSyntaxPython()));
 
     actionShell = new QAction("Shell Script", this);
     actionShell->setCheckable(true);
     actionShell->setDisabled(true);
-    connect(actionShell, SIGNAL(triggered(bool)), this, SLOT());
+    connect(actionShell, SIGNAL(triggered(bool)), this, SLOT(changeSyntaxShell()));
 
     actionXml = new QAction("XML", this);
     actionXml->setCheckable(true);
     actionXml->setDisabled(true);
-    connect(actionXml, SIGNAL(triggered(bool)), this, SLOT());
+    connect(actionXml, SIGNAL(triggered(bool)), this, SLOT(changeSyntaxXml()));
 }
 
 void MainWindow::createActionsLanguages()
@@ -402,6 +404,24 @@ void MainWindow::closeEvent(QCloseEvent * event) //save files before quit
 void MainWindow::newFile(QString path)
 {
     tabWidget->addNewTab(path);
+
+    //if code file, choose right highlightning
+    if(path.endsWith(".cpp") || path.endsWith(".c") || path.endsWith(".cc") || path.endsWith(".cxx") || path.endsWith(".c++") || path.endsWith(".hpp") || path.endsWith(".h") || path.endsWith(".hpp") || path.endsWith(".hh") || path.endsWith(".hxx") || path.endsWith(".h++"))
+        changeSyntaxCpp();
+    else if(path.endsWith(".css"))
+        changeSyntaxCss();
+    else if(path.endsWith(".html") || path.endsWith(".htm") || path.endsWith(".xhtml") || path.endsWith(".jhtml"))
+        changeSyntaxHtml();
+    else if(path.endsWith(".java") || path.endsWith(".class"))
+        changeSyntaxJava();
+    else if(path.endsWith(".php") || path.endsWith(".php4") || path.endsWith(".php3") || path.endsWith(".phtml"))
+        changeSyntaxPhp();
+    else if(path.endsWith(".py") || path.endsWith(".pyc") || path.endsWith(".pyd") || path.endsWith(".pyo") || path.endsWith(".pyw") || path.endsWith(".pyz"))
+        changeSyntaxPython();
+    else if(path.endsWith(".sh"))
+        changeSyntaxShell();
+    else if(path.endsWith(".xml") || path.endsWith(".rss") || path.endsWith(".svg"))
+        changeSyntaxXml();
 }
 
 void MainWindow::dropEvent(QDropEvent *event) // drop
@@ -489,4 +509,96 @@ void MainWindow::zoomOut()
     font.setPointSize(font.pointSize()-1);
     tabWidget->setFont(font);
     confData[1] = "FontSize = \"" + QString::number(tabWidget->getFont().pointSize()) + "\"";
+}
+
+void MainWindow::changeSyntax()
+{
+    actionCpp->setChecked(false);
+    actionCss->setChecked(false);
+    actionHtml->setChecked(false);
+    actionJava->setChecked(false);
+    actionPhp->setChecked(false);
+    actionPlainText->setChecked(false);
+    actionPython->setChecked(false);
+    actionShell->setChecked(false);
+    actionXml->setChecked(false);
+
+    QString type = tabWidget->getCurrentEditor()->getSyntax();
+
+    if(type == "cpp")
+        actionCpp->setChecked(true);
+    else if(type == "css")
+        actionCss->setChecked(true);
+    else if(type == "html")
+        actionHtml->setChecked(true);
+    else if(type == "java")
+        actionJava->setChecked(true);
+    else if(type == "php")
+        actionPhp->setChecked(true);
+    else if(type == "plain")
+        actionPlainText->setChecked(true);
+    else if(type == "python")
+        actionPython->setChecked(true);
+    else if(type == "shell")
+        actionShell->setChecked(true);
+    else if(type == "xml")
+        actionXml->setChecked(true);
+    else
+        actionPlainText->setChecked(true);
+
+    syntaxHighlighter->changeHighlighter(type, tabWidget->getCurrentEditor()->document());
+}
+
+void MainWindow::changeSyntaxCpp()
+{
+    tabWidget->getCurrentEditor()->setSyntax("cpp");
+    changeSyntax();
+}
+
+void MainWindow::changeSyntaxCss()
+{
+    tabWidget->getCurrentEditor()->setSyntax("css");
+    changeSyntax();
+}
+
+void MainWindow::changeSyntaxHtml()
+{
+    tabWidget->getCurrentEditor()->setSyntax("html");
+    changeSyntax();
+}
+
+void MainWindow::changeSyntaxJava()
+{
+    tabWidget->getCurrentEditor()->setSyntax("java");
+    changeSyntax();
+}
+
+void MainWindow::changeSyntaxPhp()
+{
+    tabWidget->getCurrentEditor()->setSyntax("php");
+    changeSyntax();
+}
+
+void MainWindow::changeSyntaxPlainText()
+{
+    tabWidget->getCurrentEditor()->setSyntax("plain");
+    changeSyntax();
+}
+
+void MainWindow::changeSyntaxPython()
+{
+    tabWidget->getCurrentEditor()->setSyntax("python");
+    changeSyntax();
+}
+
+void MainWindow::changeSyntaxShell()
+{
+    tabWidget->getCurrentEditor()->setSyntax("shell");
+    changeSyntax();
+}
+
+void MainWindow::changeSyntaxXml()
+{
+    tabWidget->getCurrentEditor()->setSyntax("xml");
+    changeSyntax();
 }

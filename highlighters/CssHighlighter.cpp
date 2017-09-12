@@ -1,6 +1,6 @@
 #include "CssHighlighter.hpp"
 
-CssHighlighter::CssHighlighter()
+CssHighlighter::CssHighlighter(QTextDocument *parent) : QSyntaxHighlighter(parent)
 {
 
 }

@@ -3,6 +3,7 @@
 Editor::Editor(QWidget *parent, QString path) : QPlainTextEdit(parent)
 {
     filePath = path;
+    syntax = "plain";
 
     //Editor properties
     setLineWrapMode(QPlainTextEdit::NoWrap);
@@ -148,6 +149,16 @@ void Editor::printFile()
 QString Editor::getFileTypes()
 {
     return fileTypes;
+}
+
+QString Editor::getSyntax()
+{
+    return syntax;
+}
+
+void Editor::setSyntax(QString type)
+{
+    syntax = type;
 }
 
 void Editor::findString(QString text)

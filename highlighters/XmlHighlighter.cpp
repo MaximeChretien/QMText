@@ -1,6 +1,6 @@
 #include "XmlHighlighter.hpp"
 
-XmlHighlighter::XmlHighlighter()
+XmlHighlighter::XmlHighlighter(QTextDocument *parent) : QSyntaxHighlighter(parent)
 {
 
 }

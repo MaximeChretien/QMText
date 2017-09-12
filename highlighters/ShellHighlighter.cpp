@@ -1,6 +1,6 @@
 #include "ShellHighlighter.hpp"
 
-ShellHighlighter::ShellHighlighter()
+ShellHighlighter::ShellHighlighter(QTextDocument *parent) : QSyntaxHighlighter(parent)
 {
 
 }

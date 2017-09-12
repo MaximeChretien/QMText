@@ -6,6 +6,7 @@
 #include "Editor.hpp"
 #include "Tab.hpp"
 #include "FindAndReplaceWidget.hpp"
+#include "Highlighter.hpp"
 
 class MainWindow : public QMainWindow
 {
@@ -50,6 +51,16 @@ private slots:
     void changeThemeLight();
     void changeThemeDark();
 
+    void changeSyntax();
+    void changeSyntaxCpp();
+    void changeSyntaxCss();
+    void changeSyntaxHtml();
+    void changeSyntaxJava();
+    void changeSyntaxPhp();
+    void changeSyntaxPlainText();
+    void changeSyntaxPython();
+    void changeSyntaxShell();
+    void changeSyntaxXml();
 
 private:
     QVBoxLayout *layout;
@@ -57,6 +68,7 @@ private:
     FindAndReplaceWidget *findAndReplace;
     QStringList confData; //config data tab
     QMenuBar *mnuBar;
+    Highlighter *syntaxHighlighter;
 
     //actions file
     QAction *actionNew;

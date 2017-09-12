@@ -1,6 +1,6 @@
 #include "PhpHighlighter.hpp"
 
-PhpHighlighter::PhpHighlighter()
+PhpHighlighter::PhpHighlighter(QTextDocument *parent) : QSyntaxHighlighter(parent)
 {
 
 }

@@ -1,6 +1,6 @@
 #include "JavaHighlighter.hpp"
 
-JavaHighlighter::JavaHighlighter()
+JavaHighlighter::JavaHighlighter(QTextDocument *parent) : QSyntaxHighlighter(parent)
 {
 
 }

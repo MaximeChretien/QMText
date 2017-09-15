@@ -9,6 +9,7 @@ Editor::Editor(QWidget *parent, QString path) : QPlainTextEdit(parent)
     setLineWrapMode(QPlainTextEdit::NoWrap);
     setFrameStyle(QFrame::NoFrame);
     setAcceptDrops(false);
+    setTabStopWidth(40);
 
     lineNumberArea = new LineNumberArea(this);
 

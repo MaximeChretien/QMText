@@ -17,10 +17,11 @@ Editor::Editor(QWidget *parent, QString path) : QPlainTextEdit(parent)
     connect(this, SIGNAL(blockCountChanged(int)), this, SLOT(updateLineNumberAreaWidth(int)));
     connect(this, SIGNAL(updateRequest(QRect,int)), this, SLOT(updateLineNumberArea(QRect,int)));
 
-    connect(this, SIGNAL(textChanged()), this, SLOT(setSaveState()));
+    connect(this->document(), SIGNAL(modificationChanged(bool)), this->document(), SLOT(setModified(bool)));
+    connect(this->document(), SIGNAL(contentsChanged()), this, SLOT(ifEmpty()));
 
     //update highlight when it's needed
-    connect(this, SIGNAL(textChanged()), this, SLOT(updateHighlight()));
+    connect(this->document(), SIGNAL(modificationChanged(bool)), this, SLOT(updateHighlight()));
     connect(this, SIGNAL(updateRequest(const QRect&, int)), this, SLOT(updateHighlight(const QRect&, int)));
 
     updateLineNumberAreaWidth(0);
@@ -33,7 +34,7 @@ Editor::Editor(QWidget *parent, QString path) : QPlainTextEdit(parent)
 
         setPlainText(flux.readAll());
     }
-    setSaveState(true);
+    document()->setModified(false);
 }
 
 int Editor::lineNumberAreaWidth()
@@ -98,21 +99,10 @@ void Editor::lineNumberAreaPaintEvent(QPaintEvent *event)
     }
 }
 
-void Editor::setSaveState(bool state)
+void Editor::ifEmpty()
 {
-    if(filePath.isEmpty() && this->toPlainText().isEmpty())
-    {
-        saveState = true;
-    }
-    else
-    {
-        saveState = state;
-    }
-}
-
-bool Editor::getSaveState()
-{
-    return saveState;
+    if(filePath.isEmpty() && this->document()->isEmpty())
+            document()->setModified(false);
 }
 
 void Editor::setFilePath(QString newPath)
@@ -134,7 +124,7 @@ void Editor::save()
         flux.setCodec("UTF-8");
 
         flux << toPlainText();
-        setSaveState(true);
+        document()->setModified(false);
 }
 
 void Editor::printFile()

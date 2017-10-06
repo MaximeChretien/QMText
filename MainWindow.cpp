@@ -367,7 +367,7 @@ void MainWindow::closeEvent(QCloseEvent * event) //save files before quit
     for(int i=0; i<tabWidget->count();i++)
     {
         tabWidget->setCurrentIndex(i);
-        if(!tabWidget->getCurrentEditor()->getSaveState())
+        if(tabWidget->getCurrentEditor()->document()->isModified())
         {
             switch (tabWidget->saveMessageBox())
             {

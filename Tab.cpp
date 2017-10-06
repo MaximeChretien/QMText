@@ -16,7 +16,7 @@ void Tab::addNewTab(QString filePath)
     addTab(textZone, getTitle(true, filePath)[0]);
     textZone->setFont(textFont);
     setCurrentIndex(count()-1);
-    connect(textZone, SIGNAL(textChanged()), this, SLOT(changeTitle()));
+    connect(textZone->document(), SIGNAL(modificationChanged(bool)), this, SLOT(changeTitle()));
 }
 
 void Tab::closeTab(int index)
@@ -30,7 +30,7 @@ void Tab::closeTab(int index)
             correctPosition = 1;
         }
         setCurrentIndex(index);
-        if(!getCurrentEditor()->getSaveState())
+        if(getCurrentEditor()->document()->isModified())
         {
             switch (saveMessageBox())
             {
@@ -122,7 +122,7 @@ QStringList Tab::getTitle(bool newTab, QString path)
 
     if(!newTab)
     {
-        if(!getCurrentEditor()->getSaveState())
+        if(getCurrentEditor()->document()->isModified())
         {
             name = "* " + name; // if it's not saved, add "*" a the beginning
             file = "* " + file;

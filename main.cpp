@@ -29,12 +29,18 @@ int main(int argc, char *argv[])
     QFont font;
     fluxConfig.setCodec("UTF-8");
 
+    QString defaultFont = "DejaVu Sans Mono";
+
+    #ifdef WIN32 //change default font for windows
+        defaultFont = "Consolas";
+    #endif
+
     //if config file don't exist
     if(!config.exists())
     {
         //create it with default settings
         config.open(QIODevice::WriteOnly | QIODevice::Text);
-        fluxConfig << "Font = \"Courier\"" << endl << "FontSize = \"12\"" << endl << "Language = \"System\"" << endl << "Theme = \"Light\"" ;
+        fluxConfig << "Font = \"" + defaultFont + "\"" << endl << "FontSize = \"12\"" << endl << "Language = \"System\"" << endl << "Theme = \"Light\"" ;
         config.close();
     }
     config.open(QIODevice::ReadWrite | QIODevice::Text);
@@ -51,8 +57,8 @@ int main(int argc, char *argv[])
         font.setFamily(configData[0]);
         if(!font.exactMatch())
         {
-            font.setFamily("Courier");
-            configData[0] = "Courier";
+            font.setFamily(defaultFont);
+            configData[0] = defaultFont;
         }
         configData[0] = "Font = \"" + configData[0] + "\"";
 

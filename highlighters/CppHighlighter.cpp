@@ -4,14 +4,26 @@ CppHighlighter::CppHighlighter(QTextDocument *parent) : QSyntaxHighlighter(paren
 {
     HighlightingRule rule;
 
-    keywordFormat.setForeground(Qt::blue);
+    keywordFormat.setForeground(Qt::red);
     keywordFormat.setFontWeight(QFont::Bold);
     QStringList keywordPatterns;
-    keywordPatterns << "\\bbool\\b" << "\\bchar\\b" << "\\bclass\\b" << "\\bconst\\b" << "\\bdouble\\b" << "\\benum\\b" << "\\bexplicit\\b" << "\\bfloat\\b" << "\\bfriend\\b" << "\\binline\\b" << "\\bint\\b" << "\\blong\\b" << "\\bnamespace\\b" << "\\boperator\\b" << "\\bprivate\\b" << "\\bprotected\\b" << "\\bpublic\\b" << "\\bshort\\b" << "\\bsignals\\b" << "\\bsigned\\b" << "\\bslots\\b" << "\\bstatic\\b" << "\\bstring\\b"<< "\\bstruct\\b" << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b" << "\\bunion\\b" << "\\bunsigned\\b" << "\\bvirtual\\b" << "\\bvoid\\b" << "\\bvolatile\\b";
+    keywordPatterns << "\\bclass\\b" << "\\bconst\\b" << "\\benum\\b" << "\\bexplicit\\b" << "\\bfriend\\b" << "\\binline\\b" << "\\bnamespace\\b" << "\\boperator\\b" << "\\bprivate\\b" << "\\bprotected\\b" << "\\bpublic\\b" << "\\bsignals\\b" << "\\bsigned\\b" << "\\bslots\\b" << "\\bstatic\\b" << "\\bstruct\\b" << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b" << "\\bunion\\b" << "\\busing\\b" << "\\bvirtual\\b" << "\\bvolatile\\b";
     foreach (const QString &pattern, keywordPatterns)
     {
         rule.pattern = QRegExp(pattern);
         rule.format = keywordFormat;
+        highlightingRules.append(rule);
+
+    }
+
+    varFormat.setForeground(Qt::cyan);
+    varFormat.setFontWeight(QFont::Bold);
+    QStringList varPatterns;
+    varPatterns << "\\bbool\\b" << "\\bchar\\b" << "\\bdouble\\b" << "\\bfloat\\b" << "\\bint\\b" << "\\blong\\b" << "\\bshort\\b" << "\\bstring\\b" << "\\bvoid\\b" << "\\bunsigned\\b";
+    foreach (const QString &pattern, varPatterns)
+    {
+        rule.pattern = QRegExp(pattern);
+        rule.format = varFormat;
         highlightingRules.append(rule);
 
     }
@@ -29,16 +41,39 @@ CppHighlighter::CppHighlighter(QTextDocument *parent) : QSyntaxHighlighter(paren
 
     multiLineCommentFormat.setForeground(Qt::red);
 
-    quotationFormat.setForeground(Qt::darkGreen);
+    quotationFormat.setForeground(Qt::yellow);
     rule.pattern = QRegExp("\".*\"");
     rule.format = quotationFormat;
     highlightingRules.append(rule);
 
     functionFormat.setFontItalic(true);
-    functionFormat.setForeground(Qt::blue);
+    functionFormat.setForeground(Qt::green);
     rule.pattern = QRegExp("\\b[A-Za-z0-9_]+(?=\\()");
     rule.format = functionFormat;
     highlightingRules.append(rule);
+
+    hashFormat.setFontItalic(true);
+    hashFormat.setFontWeight(QFont::Bold);
+    hashFormat.setForeground(Qt::magenta);
+    rule.pattern = QRegExp("\#\\binclude");
+    rule.format = hashFormat;
+    highlightingRules.append(rule);
+
+    includeFormat.setForeground(Qt::yellow);
+    rule.pattern = QRegExp("<.*>");
+    rule.format = includeFormat;
+    highlightingRules.append(rule);
+
+    testFormat.setForeground(Qt::red);
+    QStringList testPatterns;
+    testPatterns << "\\bif\\b" << "\\belse\\b" << "\\bwhile\\b" << "\\bdo\\b" << "\\bswitch\\b" << "\\bcase\\b" << "\\bbreak\\b" << "\\breturn\\b" << "\\bdefault\\b";
+    foreach (const QString &pattern, testPatterns)
+    {
+        rule.pattern = QRegExp(pattern);
+        rule.format = testFormat;
+        highlightingRules.append(rule);
+
+    }
 
     commentStartExpression = QRegExp("/\\*");
     commentEndExpression = QRegExp("\\*/");

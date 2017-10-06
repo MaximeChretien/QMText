@@ -27,11 +27,15 @@ private:
     QRegExp commentEndExpression;
 
     QTextCharFormat keywordFormat;
+    QTextCharFormat varFormat;
+    QTextCharFormat testFormat;
     QTextCharFormat classFormat;
     QTextCharFormat singleLineCommentFormat;
     QTextCharFormat multiLineCommentFormat;
     QTextCharFormat quotationFormat;
     QTextCharFormat functionFormat;
+    QTextCharFormat includeFormat;
+    QTextCharFormat hashFormat;
 };
 
 #endif // CPPHIGHLIGHTER_H

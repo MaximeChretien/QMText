@@ -4,18 +4,6 @@ CppHighlighter::CppHighlighter(QTextDocument *parent) : QSyntaxHighlighter(paren
 {
     HighlightingRule rule;
 
-    keywordFormat.setForeground(Qt::red);
-    keywordFormat.setFontWeight(QFont::Bold);
-    QStringList keywordPatterns;
-    keywordPatterns << "\\bclass\\b" << "\\bconst\\b" << "\\benum\\b" << "\\bexplicit\\b" << "\\bfriend\\b" << "\\binline\\b" << "\\bnamespace\\b" << "\\boperator\\b" << "\\bprivate\\b" << "\\bprotected\\b" << "\\bpublic\\b" << "\\bsignals\\b" << "\\bsigned\\b" << "\\bslots\\b" << "\\bstatic\\b" << "\\bstruct\\b" << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b" << "\\bunion\\b" << "\\busing\\b" << "\\bvirtual\\b" << "\\bvolatile\\b";
-    foreach (const QString &pattern, keywordPatterns)
-    {
-        rule.pattern = QRegExp(pattern);
-        rule.format = keywordFormat;
-        highlightingRules.append(rule);
-
-    }
-
     varFormat.setForeground(Qt::cyan);
     varFormat.setFontWeight(QFont::Bold);
     QStringList varPatterns;
@@ -28,7 +16,7 @@ CppHighlighter::CppHighlighter(QTextDocument *parent) : QSyntaxHighlighter(paren
 
     }
 
-    singleLineCommentFormat.setForeground(Qt::red);
+    singleLineCommentFormat.setForeground(Qt::gray);
     rule.pattern = QRegExp("//[^\n]*");
     rule.format = singleLineCommentFormat;
     highlightingRules.append(rule);
@@ -58,13 +46,14 @@ CppHighlighter::CppHighlighter(QTextDocument *parent) : QSyntaxHighlighter(paren
     rule.format = includeFormat;
     highlightingRules.append(rule);
 
-    testFormat.setForeground(Qt::red);
-    QStringList testPatterns;
-    testPatterns << "\\bif\\b" << "\\belse\\b" << "\\bwhile\\b" << "\\bdo\\b" << "\\bswitch\\b" << "\\bcase\\b" << "\\bbreak\\b" << "\\breturn\\b" << "\\bdefault\\b" << "\\bfor\\b";
-    foreach (const QString &pattern, testPatterns)
+    keywordFormat.setForeground(Qt::red);
+    keywordFormat.setFontWeight(QFont::Bold);
+    QStringList keywordPatterns;
+    keywordPatterns << "\\bclass\\b" << "\\bconst\\b" << "\\benum\\b" << "\\bexplicit\\b" << "\\bfriend\\b" << "\\binline\\b" << "\\bnamespace\\b" << "\\boperator\\b" << "\\bprivate\\b" << "\\bprotected\\b" << "\\bpublic\\b" << "\\bsignals\\b" << "\\bsigned\\b" << "\\bslots\\b" << "\\bstatic\\b" << "\\bstruct\\b" << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b" << "\\bunion\\b" << "\\busing\\b" << "\\bvirtual\\b" << "\\bvolatile\\b" << "\\bif\\b" << "\\belse\\b" << "\\bwhile\\b" << "\\bdo\\b" << "\\bswitch\\b" << "\\bcase\\b" << "\\bbreak\\b" << "\\breturn\\b" << "\\bdefault\\b" << "\\bfor\\b";
+    foreach (const QString &pattern, keywordPatterns)
     {
         rule.pattern = QRegExp(pattern);
-        rule.format = testFormat;
+        rule.format = keywordFormat;
         highlightingRules.append(rule);
 
     }

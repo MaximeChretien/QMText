@@ -66,7 +66,7 @@ CppHighlighter::CppHighlighter(QTextDocument *parent) : QSyntaxHighlighter(paren
 
     testFormat.setForeground(Qt::red);
     QStringList testPatterns;
-    testPatterns << "\\bif\\b" << "\\belse\\b" << "\\bwhile\\b" << "\\bdo\\b" << "\\bswitch\\b" << "\\bcase\\b" << "\\bbreak\\b" << "\\breturn\\b" << "\\bdefault\\b";
+    testPatterns << "\\bif\\b" << "\\belse\\b" << "\\bwhile\\b" << "\\bdo\\b" << "\\bswitch\\b" << "\\bcase\\b" << "\\bbreak\\b" << "\\breturn\\b" << "\\bdefault\\b" << "\\bfor\\b";
     foreach (const QString &pattern, testPatterns)
     {
         rule.pattern = QRegExp(pattern);

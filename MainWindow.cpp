@@ -86,6 +86,12 @@ MainWindow::MainWindow(QStringList confData, QString confFile)
     changeWindowTitle();
 }
 
+MainWindow::~MainWindow()
+{
+    delete settings;
+    delete syntaxHighlighter;
+}
+
 void MainWindow::createActions()
 {
 

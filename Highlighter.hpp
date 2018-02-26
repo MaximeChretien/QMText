@@ -15,6 +15,7 @@ class Highlighter
 {
 public:
     Highlighter();
+    ~Highlighter();
 
 public slots:
     void changeHighlighter(QString type, QTextDocument *doc);

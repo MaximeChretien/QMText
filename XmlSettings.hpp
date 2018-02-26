@@ -9,6 +9,7 @@ class XmlSettings
 {
 public:
     XmlSettings(QString file);
+    ~XmlSettings();
     QStringList read();
     void write(QStringList configData);
 

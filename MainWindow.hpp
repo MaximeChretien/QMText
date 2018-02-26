@@ -15,6 +15,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QStringList confData, QString confFile);
+    ~MainWindow();
 
     void createMenus();
     void createActions();

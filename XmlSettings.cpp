@@ -9,6 +9,12 @@ XmlSettings::XmlSettings(QString file)
     xmlWriter->setAutoFormatting(true);
 }
 
+XmlSettings::~XmlSettings()
+{
+    delete xmlReader;
+    delete xmlWriter;
+}
+
 QStringList XmlSettings::read()
 {
     QStringList configData({0,0,0,0});

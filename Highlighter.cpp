@@ -12,6 +12,18 @@ Highlighter::Highlighter()
     xml = new XmlHighlighter(0);*/
 }
 
+Highlighter::~Highlighter()
+{
+    delete cpp;
+    /*delete css;
+    delete html;
+    delete java;
+    delete php;*/
+    delete python;
+    /*delete shell;
+    delete xml;*/
+}
+
 void Highlighter::changeHighlighter(QString type, QTextDocument *doc)
 {
     disableAll();

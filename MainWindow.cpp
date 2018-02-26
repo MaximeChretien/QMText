@@ -176,7 +176,6 @@ void MainWindow::createActionsSyntax()
 {
     actionCpp = new QAction("C++", this);
     actionCpp->setCheckable(true);
-    //actionCpp->setDisabled(true);
     connect(actionCpp, SIGNAL(triggered(bool)), this, SLOT(changeSyntaxCpp()));
 
     actionCss = new QAction("CSS", this);
@@ -206,7 +205,6 @@ void MainWindow::createActionsSyntax()
 
     actionPython = new QAction("Python", this);
     actionPython->setCheckable(true);
-    actionPython->setDisabled(true);
     connect(actionPython, SIGNAL(triggered(bool)), this, SLOT(changeSyntaxPython()));
 
     actionShell = new QAction("Shell Script", this);

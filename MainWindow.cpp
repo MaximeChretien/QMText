@@ -1,16 +1,12 @@
 #include "MainWindow.hpp"
 
-MainWindow::MainWindow(QString confFile, QFont font, QString lang, QString theme)
+MainWindow::MainWindow(QStringList confData, QString confFile)
 {
-    configFile = confFile;
-    QFile conf(configFile);
-    QTextStream fluxConf(&conf);
-    fluxConf.setCodec("UTF-8");
-    conf.open(QIODevice::ReadWrite | QIODevice::Text);
-    while(!fluxConf.atEnd())
-    {
-        confData.append(fluxConf.readLine());
-    }
+    settings = new XmlSettings(confFile);
+    configData = confData;
+    QFont font = QFont(configData[0],configData[1].toInt());
+    QString lang = configData[2];
+    QString theme = configData[3];
 
     tabWidget = new Tab(this,font);
 
@@ -343,8 +339,8 @@ void MainWindow::changeFont()
             tabWidget->setFont(newFont);
         }
         //write new config
-        confData[0] = "Font = \"" + newFont.family() + "\"";
-        confData[1] = "FontSize = \"" + QString::number(newFont.pointSize()) + "\"";
+        configData[0] = newFont.family();
+        configData[1] = QString::number(newFont.pointSize());
 
 }
 
@@ -356,11 +352,6 @@ void MainWindow::changeWindowTitle()
 void MainWindow::closeEvent(QCloseEvent * event) //save files before quit
 {
     bool cancel = false;
-    //open config file
-    QFile conf(configFile);
-    QTextStream fluxConf(&conf);
-    fluxConf.setCodec("UTF-8");
-    conf.open(QIODevice::ReadWrite | QIODevice::Text);
 
     for(int i=0; i<tabWidget->count();i++)
     {
@@ -392,9 +383,7 @@ void MainWindow::closeEvent(QCloseEvent * event) //save files before quit
     }
     else
     {
-        conf.resize(0); // erase config file
-        fluxConf << confData[0] << endl << confData[1] << endl << confData[2] << endl << confData[3]; // write new config
-        conf.close(); // close file
+        settings->write(configData);
         QWidget::closeEvent(event); //close soft
     }
 }
@@ -438,9 +427,9 @@ void MainWindow::dragEnterEvent(QDragEnterEvent *event) // drag
             event->acceptProposedAction();
 }
 
-void MainWindow::changeLanguage(QString langue) // change language config
+void MainWindow::changeLanguage(QString language) // change language config
 {
-    confData[2] = "Language = \"" + langue + "\"";
+    configData[2] = language;
 
     QMessageBox::information(this, tr("Reboot needed"), tr("The language change will take effect after QMText's next reboot."));
 }
@@ -472,7 +461,7 @@ void MainWindow::changeLanguageEn()
 
 void MainWindow::changeTheme(QString theme) // change theme config
 {
-    confData[3] = "Theme = \"" + theme + "\"";
+    configData[3] = theme;
 
     QMessageBox::information(this, tr("Reboot needed"), tr("The theme change will take effect after QMText's next reboot."));
 }
@@ -498,7 +487,7 @@ void MainWindow::zoomIn()
     QFont font = tabWidget->getFont();
     font.setPointSize(font.pointSize()+1);
     tabWidget->setFont(font);
-    confData[1] = "FontSize = \"" + QString::number(tabWidget->getFont().pointSize()) + "\"";
+    configData[1] = QString::number(tabWidget->getFont().pointSize());
 }
 
 void MainWindow::zoomOut()
@@ -506,7 +495,7 @@ void MainWindow::zoomOut()
     QFont font = tabWidget->getFont();
     font.setPointSize(font.pointSize()-1);
     tabWidget->setFont(font);
-    confData[1] = "FontSize = \"" + QString::number(tabWidget->getFont().pointSize()) + "\"";
+    configData[1] = QString::number(tabWidget->getFont().pointSize());
 }
 
 void MainWindow::changeSyntax()

@@ -7,13 +7,14 @@
 #include "Tab.hpp"
 #include "FindAndReplaceWidget.hpp"
 #include "Highlighter.hpp"
+#include "XmlSettings.hpp"
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QString confFile, QFont font, QString lang, QString theme);
+    MainWindow(QStringList confData, QString confFile);
 
     void createMenus();
     void createActions();
@@ -66,7 +67,8 @@ private:
     QVBoxLayout *layout;
     Tab *tabWidget;
     FindAndReplaceWidget *findAndReplace;
-    QStringList confData; //config data tab
+    QStringList configData; //config data tab
+    XmlSettings *settings;
     QMenuBar *mnuBar;
     Highlighter *syntaxHighlighter;
 
@@ -113,7 +115,6 @@ private:
     QAction *actionAbout;
     QAction *actionAboutQt;
 
-    QString configFile; //config file path
 };
 
 #endif // MainWindow

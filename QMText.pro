@@ -6,6 +6,7 @@ SOURCES += \
     Editor.cpp \
     Tab.cpp \
     FindAndReplaceWidget.cpp \
+    XmlSettings.cpp \
     Highlighter.cpp \
     highlighters/CppHighlighter.cpp \
     highlighters/CssHighlighter.cpp \
@@ -21,6 +22,7 @@ HEADERS += \
     MainWindow.hpp \
     Editor.hpp \
     FindAndReplaceWidget.hpp \
+    XmlSettings.hpp \
     Highlighter.hpp \
     highlighters/CppHighlighter.hpp \
     highlighters/CssHighlighter.hpp \

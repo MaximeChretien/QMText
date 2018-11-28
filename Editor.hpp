@@ -34,7 +34,7 @@ class Editor : public QPlainTextEdit
     Q_OBJECT
 
 public:
-    Editor(QWidget *parent = 0, QString path = "");
+    Editor(QWidget *parent = nullptr, QString path = "");
 
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     int lineNumberAreaWidth();

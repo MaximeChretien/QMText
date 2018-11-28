@@ -30,7 +30,7 @@ QT_END_NAMESPACE
 class PythonHighlighter : public QSyntaxHighlighter
 {
 public:
-    PythonHighlighter(QTextDocument *parent = 0);
+    PythonHighlighter(QTextDocument *parent = nullptr);
 protected:
     void highlightBlock(const QString &text) override;
 

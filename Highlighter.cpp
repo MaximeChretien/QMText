@@ -21,12 +21,12 @@
 
 Highlighter::Highlighter()
 {
-    cpp = new CppHighlighter(0);
+    cpp = new CppHighlighter(nullptr);
     /*css = new CssHighlighter(0);
     html = new HtmlHighlighter(0);
     java = new JavaHighlighter(0);
     php = new PhpHighlighter(0);*/
-    python = new PythonHighlighter(0);
+    python = new PythonHighlighter(nullptr);
     /*shell = new ShellHighlighter(0);
     xml = new XmlHighlighter(0);*/
 }
@@ -67,12 +67,12 @@ void Highlighter::changeHighlighter(QString type, QTextDocument *doc)
 
 void Highlighter::disableAll()
 {
-    cpp->setDocument(0);
+    cpp->setDocument(nullptr);
     /*css->setDocument(0);
     html->setDocument(0);
     java->setDocument(0);
     php->setDocument(0);*/
-    python->setDocument(0);
+    python->setDocument(nullptr);
     /*shell->setDocument(0);
     xml->setDocument(0);*/
 }

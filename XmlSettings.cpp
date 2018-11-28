@@ -36,7 +36,7 @@ XmlSettings::~XmlSettings()
 
 QStringList XmlSettings::read()
 {
-    QStringList configData({0,0,0,0});
+    QStringList configData({nullptr,nullptr,nullptr,nullptr});
     QFile file(fileName);
     file.open((QFile::ReadOnly | QIODevice::Text));
     xmlReader->setDevice(&file);

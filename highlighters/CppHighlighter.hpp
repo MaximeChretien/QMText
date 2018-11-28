@@ -30,7 +30,7 @@ QT_END_NAMESPACE
 class CppHighlighter : public QSyntaxHighlighter
 {
 public:
-    CppHighlighter(QTextDocument *parent = 0);
+    CppHighlighter(QTextDocument *parent = nullptr);
 protected:
     void highlightBlock(const QString &text) override;
 

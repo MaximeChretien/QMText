@@ -30,7 +30,7 @@ QT_END_NAMESPACE
 class ShellHighlighter : public QSyntaxHighlighter
 {
 public:
-    ShellHighlighter(QTextDocument *parent = 0);
+    ShellHighlighter(QTextDocument *parent = nullptr);
 };
 
 #endif // SHELLHIGHLIGHTER_H

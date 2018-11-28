@@ -30,7 +30,7 @@ QT_END_NAMESPACE
 class JavaHighlighter : public QSyntaxHighlighter
 {
 public:
-    JavaHighlighter(QTextDocument *parent = 0);
+    JavaHighlighter(QTextDocument *parent = nullptr);
 };
 
 #endif // JAVAHIGHLIGHTER_H

@@ -30,7 +30,7 @@ QT_END_NAMESPACE
 class HtmlHighlighter : public QSyntaxHighlighter
 {
 public:
-    HtmlHighlighter(QTextDocument *parent = 0);
+    HtmlHighlighter(QTextDocument *parent = nullptr);
 };
 
 #endif // HTMLHIGHLIGHTER_H

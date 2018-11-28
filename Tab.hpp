@@ -29,7 +29,7 @@ class Tab : public QTabWidget
     Q_OBJECT
 
 public:
-    Tab(QWidget *parent = 0, QFont font = QFont("Courier"));
+    Tab(QWidget *parent = nullptr, QFont font = QFont("Courier"));
     void addNewTab(QString filePath = "");
     void setFont(QFont newFont);
     QFont getFont();

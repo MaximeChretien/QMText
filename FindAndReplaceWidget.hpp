@@ -30,7 +30,7 @@ class FindAndReplaceWidget : public QWidget
     Q_OBJECT
 
 public:
-    FindAndReplaceWidget(QWidget *parent = 0);
+    FindAndReplaceWidget(QWidget *parent = nullptr);
 
 private slots:
     void findClicked();

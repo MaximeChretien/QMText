@@ -37,9 +37,16 @@ RESOURCES += \
     res.qrc
 
 RC_ICONS = icon.ico
-TRANSLATIONS = qmtext_en.ts qmtext_fr.ts
+
+TRANSLATIONS += \
+    qmtext_en.ts \
+    qmtext_fr.ts
 
 DISTFILES += \
     COPYING \
+    translations/qmtext_en.ts \
+    translations/qmtext_fr.ts \
     res/qss/Dark.qss \
-    res/qss/Light.qss
+    res/qss/Light.qss \
+    res/tr/qmtext_en.qm \
+    res/tr/qmtext_fr.qm

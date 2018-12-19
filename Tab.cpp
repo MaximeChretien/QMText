@@ -161,7 +161,7 @@ void Tab::changeTitle()
 
 Editor *Tab::getCurrentEditor()
 {
-    return (Editor*)currentWidget();
+    return static_cast<Editor*>(currentWidget());
 }
 
 //transmit signals to current editor slots
